@@ -1,0 +1,20 @@
+* {
+  border: 2px solid orange;
+}
+.gameScene {
+  display: flex;
+}
+.leftPart{
+  flex: 8;
+}
+.rightPart{
+  flex: 4;
+  background-color: #bbb;
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
+.hanafuda {
+  height: 150px;
+}
