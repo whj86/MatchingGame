@@ -8,114 +8,114 @@
     <script src="jquery-3.7.1.js"></script>
   </head>
   <body>
-    <div class="gameScene">
-      <div class="leftPart">
+    <div class="game_scene">
+      <div class="left_part">
         <div class="row">
-          <div class="hanafuda" id="place_r0_c0">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="place_r0_c1">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="place_r0_c2">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="place_r0_c3">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="place_r0_c4">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="place_r0_c5">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
         <div class="row">
-          <div class="hanafuda" id="coordinate_r1_c0">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r1_c1">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r1_c2">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r1_c3">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r1_c4">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r1_c5">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="hanafuda" id="coordinate_r2_c0">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-          <div class="hanafuda" id="coordinate_r2_c1">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-          <div class="hanafuda" id="coordinate_r2_c2">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-          <div class="hanafuda" id="coordinate_r2_c3">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-          <div class="hanafuda" id="coordinate_r2_c4">
-            <div class="front"></div>
-            <div class="back"></div>
-          </div>
-          <div class="hanafuda" id="coordinate_r2_c5">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
         <div class="row">
-          <div class="hanafuda" id="coordinate_r3_c0">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r3_c1">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r3_c2">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r3_c3">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r3_c4">
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda" id="coordinate_r3_c5">
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="hanafuda">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>
+          <div class="hanafuda">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
       </div>
-      <div class="rightPart"></div>
+      <div class="right_part"></div>
     </div>
     <script>
       const all_hanafudas = [
@@ -144,7 +144,13 @@
         { id: "p_11_1", src: "img/Hanafuda/p11_October_Tane.png" },
         { id: "p_11_2", src: "img/Hanafuda/p11_October_Tane.png" },
       ];
-      function gamePrepare(){
+
+      function hanafuda_front_data_setting(setting_data){
+        // 卡片每列由左至右設定完，再設定下一列。
+
+      }
+
+      function game_prepare(){
         shuffle(all_hanafudas);
         show_shuffle_result(all_hanafudas);
       }
@@ -164,8 +170,8 @@
       }
 
       $(document).ready(function () {
-        gamePrepare();
-        
+        game_prepare();
+
         $(".hanafuda").click(function () {
           $(this).toggleClass("flipped");
         });
