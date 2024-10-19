@@ -4,20 +4,48 @@
 .gameScene {
   display: flex;
 }
+
 .leftPart{
   flex: 8;
-  border: 3px solid orange;
 }
+
 .rightPart{
   flex: 4;
   background-color: #bbb;
 }
+
 .row {
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .hanafuda {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: 0.5s ease;
+}
+
+.hanafuda>.front,
+.hanafuda>.back {
+  grid-area: 1 / 1 / 2 / 2;
   height: 150px;
+  width: 90px;
+}
+
+.front {
+  background-size: cover;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.back {
+  background-image: url(img/cardBack.jpg);
+  background-size: cover;
+  backface-visibility: hidden;
+}
+
+.flipped{
+	transform: rotateY(180deg);
 }
