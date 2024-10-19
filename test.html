@@ -144,6 +144,10 @@
         { id: "p_11_1", src: "img/Hanafuda/p11_October_Tane.png" },
         { id: "p_11_2", src: "img/Hanafuda/p11_October_Tane.png" },
       ];
+      function gamePrepare(){
+        shuffle(all_hanafudas);
+        show_shuffle_result(all_hanafudas);
+      }
 
       function shuffle(array) {
         // Fisher-Yates Shuffle
@@ -160,8 +164,8 @@
       }
 
       $(document).ready(function () {
-        shuffle(all_hanafudas);
-        show_shuffle_result(all_hanafudas);
+        gamePrepare();
+        
         $(".hanafuda").click(function () {
           $(this).toggleClass("flipped");
         });
