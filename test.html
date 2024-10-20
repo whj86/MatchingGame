@@ -11,105 +11,105 @@
     <div class="game_scene">
       <div class="left_part">
         <div class="row row0">
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
         <div class="row row1">
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
         <div class="row row2">
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
         </div>
         <div class="row row3">
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
-          <div class="hanafuda">
+          <div class="card">
             <div class="front"></div>
             <div class="back"></div>
           </div>
@@ -118,7 +118,8 @@
       <div class="right_part"></div>
     </div>
     <script>
-      const all_hanafudas = [
+      // 設定卡牌資料
+      const all_cards = [
         ["p00_1", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
         ["p00_2", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
         ["p01_1", "background-image: url(img/Hanafuda/p1_March_Hikari.png);"],
@@ -163,11 +164,61 @@
         ["p11_2", "background-image: url(img/Hanafuda/p11_October_Tane.png);"],
       ];
 
-      const card_qty = all_hanafudas.length;
+      // 設定卡牌數量(常數)
+      const card_qty = all_cards.length;
 
-      function hanafuda_front_data_setting(setting_data) {
+      // 檯面上剩餘卡牌數量 (未使用)
+      // let unused_card_qty = card_qty;
+
+      // 宣告堆疊
+      let stack = null;
+
+      function Stack() {
+        // 定義堆疊，每個element都是字串，代表front ID。
+        let items = [];
+        function push(element) {
+          items.push(element);
+        }
+        function pop() {
+          return items.pop();
+        }
+        function peek() {
+          // 查看最上方的item
+          if (!(items.length)){
+            // 要是堆疊為空，回傳空字串。
+            return "";
+          } else {
+            return items[items.length - 1];
+          }
+        }
+        function check_is_full() {
+          if (items.length == 2) {
+            return true;
+          } else {
+            return false;
+          }
+        }
+        return {
+          push,
+          pop,
+          peek,
+          check_is_full
+        };
+      }
+
+      function shuffle_array(array) {
+        // 發牌
+        // Fisher-Yates Shuffle 演算法
+        for (let i = array.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      function card_front_data_setting(setting_data) {
+        // 放牌
         // 卡片每列由左至右設定完，再設定下一列。
-        let fronts = document.querySelectorAll(".hanafuda .front");
+        let fronts = document.querySelectorAll(".card .front");
         let index = 0;
         fronts.forEach((front) => {
           front.setAttribute("id", setting_data[index][0]);
@@ -176,62 +227,86 @@
         });
       }
 
-      function shuffle_array(array) {
-        // Fisher-Yates Shuffle
-        for (let i = array.length - 1; i > 0; i--) {
-          let j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
+      function stack_initialize() {
+        // 堆疊初始化
+        stack = new Stack();
+      }
+      
+      function flip_card(id) {
+        // 翻牌
+        $(this).toggleClass("flipped");
       }
 
-      function show_array_content(array) {
-        array.forEach((element) => {
-          console.log(element);
-        });
-      }
-
-      function check_id(id1, id2) {
-        if (id1 == id2) {
-          return true;
-        } else {
-          return false;
-        }
+      function stack_check_front_id(id) {
+        // 翻開的牌和堆疊內的牌同一張嗎(相同front ID)?
+    
+        // if (id == stack.peek()) {
+        //   console.log("同一張，不放進堆疊。");
+        //   return true;
+        // } else {
+        //   console.log("不同張，放進堆疊。");
+        //   if (!(stack.check_is_full())){
+        //     stack.push(id);
+        //   } else {
+        //     console.log("堆疊已滿，不放進堆疊。");
+        //   }
+        //   return false;
+        // }
       }
 
       function game_prepare() {
-        shuffle_array(all_hanafudas);
-        hanafuda_front_data_setting(all_hanafudas);
+        // 準備遊戲
+
+        // 洗牌
+        shuffle_array(all_cards);
+        // 發牌
+        card_front_data_setting(all_cards);
+        // 堆疊初始化
+        stack_initialize();
       }
 
-      function game_start() {
-        let flipped_card_qty = 0;
-        let card1_id = 0;
-        let card2_id = 0;
-        $(".hanafuda").click(function () {
-          flipped_card_qty++;
-          if (flipped_card_qty % 2) {
-            // 翻第一張
-            card1_id = $(this).children(".front")[0].id.split("_")[0];
-            console.log("第一張" + card1_id);
-          } else {
-            // 翻第二張
-            card2_id = $(this).children(".front")[0].id.split("_")[0];
-            console.log("第二張" + card2_id);
+      function game() {
+        // 進行遊戲
 
-            // 卡片id比對
-            if (check_id(card1_id, card2_id)) {
-              console.log("這兩張一樣");
-            } else {
-              console.log("這兩張不一樣");
-            }
-          }
-          $(this).toggleClass("flipped");
-        });
+          // 宣告現在點擊的卡片元素
+          let now_click_card_elem = null;
+          // 宣告現在點擊的卡片front元素 
+          let now_click_front_elem = null;
+          // 宣告現在點擊的卡片front ID (字串)
+          let now_click_front_id = null;
+          // 宣告現在點擊的卡片front組別 (字串)
+          let now_click_front_group = null;
+
+
+          // 點牌偵測
+          $(".card").click(function () {
+            // 設定現在點擊的卡片元素
+            now_click_card_elem = this;
+            // 設定現在點擊的卡片front元素
+            now_click_front_elem = $(this).children(".front")["0"];
+            // 設定現在點擊的卡片front ID (字串)
+            now_click_front_id = now_click_front_elem["id"];
+            // 設定現在點擊的卡片front組別 (字串)
+            now_click_front_group = now_click_front_id.split('_')[0];
+
+            console.log(now_click_card_elem);
+            console.log(now_click_front_elem);
+            console.log(now_click_front_id);
+            console.log(now_click_front_group);
+          });
+          
+          // 翻開的牌和堆疊內的牌同一張嗎(相同ID)?
+
       }
+
+      // function end_game(){
+      //   // 結束遊戲
+      // }
 
       $(document).ready(function () {
         game_prepare();
-        game_start();
+        game();
+        // end_game();
       });
     </script>
   </body>

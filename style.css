@@ -21,14 +21,14 @@
   margin-bottom: 20px;
 }
 
-.hanafuda {
+.card {
   display: grid;
   transform-style: preserve-3d;
   transition: 0.5s ease;
 }
 
-.hanafuda>.front,
-.hanafuda>.back {
+.card>.front,
+.card>.back {
   grid-area: 1 / 1 / 2 / 2;
   height: 150px;
   width: 90px;
