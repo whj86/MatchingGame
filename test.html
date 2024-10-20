@@ -182,8 +182,8 @@
       // 宣告現在點擊的卡片front ID (字串)
       let now_click_front_id = null;
 
-      // 宣告現在點擊的卡片front組別 (字串)
-      let now_click_front_group = null;
+      // 宣告現在點擊的卡片front組別 (字串)(可能不會用到)
+      // let now_click_front_group = null;
 
       function Stack() {
         // 定義堆疊，每個element都是字串，代表front ID。
@@ -247,8 +247,16 @@
       function flip_card(card_elem) {
         // 翻牌
         $(card_elem).toggleClass("flipped");
-        console.log("嘗試翻牌");
-        
+      }
+
+      function recover_card(card_elem) {
+        // 把牌蓋回去
+        $(card_elem).toggleClass("recover");
+      }
+      
+      function hidden_card(card_elem) {
+        // 把牌蓋回去
+        $(card_elem).toggleClass("hidden");
       }
 
       function front_id_to_stack(id) {
@@ -269,9 +277,33 @@
           flip_card(now_click_card_elem);
           // 塞進堆疊
           stack.push(id);
-        } else {
-          // 堆疊滿了
-          
+        } 
+
+        // 塞進堆疊後，看堆疊滿了沒？
+        if (stack.check_is_full()){
+          // 堆疊滿了，接著判斷堆疊中兩張牌是否同組？
+          // 邊判斷，邊清堆疊。
+
+          let second_card_front_elem = document.getElementById(stack.pop());
+          let second_click_card_group = second_card_front_elem.id.split("_")[0];
+          let second_card_elem = $(second_card_front_elem).closest('.card');
+
+          let first_card_front_elem = document.getElementById(stack.pop());
+          let first_click_card_group = first_card_front_elem.id.split("_")[0];
+          let first_card_elem = $(first_card_front_elem).closest('.card');
+
+          if (first_click_card_group == second_click_card_group) {
+            // 同組，讓兩張牌消失在畫面上。
+            console.log("已清空堆疊，剛才堆疊中的兩張牌同組，讓這兩張牌消失。");
+            hidden_card(first_card_elem);
+            hidden_card(second_card_elem);
+          } else {
+            // 不同組，讓兩張牌翻回去
+            
+            console.log("已清空堆疊，剛才堆疊中的兩張牌不同組，將這兩張牌翻回去。");
+            // recover_card(second_card_elem);  
+            // recover_card(first_card_elem);
+          }
         }
       }
 
@@ -298,12 +330,12 @@
           // 設定現在點擊的卡片front ID (字串)
           now_click_front_id = now_click_front_elem["id"];
           // 設定現在點擊的卡片front組別 (字串)
-          now_click_front_group = now_click_front_id.split("_")[0];
+          // now_click_front_group = now_click_front_id.split("_")[0];
 
           console.log(now_click_card_elem);
           console.log(now_click_front_elem);
           console.log(now_click_front_id);
-          console.log(now_click_front_group);
+          // console.log(now_click_front_group);
 
           // 翻開的牌和堆疊內的牌同一張嗎(相同ID)?
           front_id_to_stack(now_click_front_id);

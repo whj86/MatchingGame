@@ -51,6 +51,11 @@
 	transform: rotateY(180deg);
 }
 
+.recover{
+	transform: rotateY(180deg);
+  transition: 1s ease;
+}
+
 .hidden{
   transform: rotateY(180deg);
   visibility: hidden;
