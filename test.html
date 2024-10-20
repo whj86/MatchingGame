@@ -173,6 +173,18 @@
       // 宣告堆疊
       let stack = null;
 
+      // 宣告現在點擊的卡片元素
+      let now_click_card_elem = null;
+
+      // 宣告現在點擊的卡片front元素
+      let now_click_front_elem = null;
+
+      // 宣告現在點擊的卡片front ID (字串)
+      let now_click_front_id = null;
+
+      // 宣告現在點擊的卡片front組別 (字串)
+      let now_click_front_group = null;
+
       function Stack() {
         // 定義堆疊，每個element都是字串，代表front ID。
         let items = [];
@@ -184,7 +196,7 @@
         }
         function peek() {
           // 查看最上方的item
-          if (!(items.length)){
+          if (!items.length) {
             // 要是堆疊為空，回傳空字串。
             return "";
           } else {
@@ -202,7 +214,7 @@
           push,
           pop,
           peek,
-          check_is_full
+          check_is_full,
         };
       }
 
@@ -231,27 +243,36 @@
         // 堆疊初始化
         stack = new Stack();
       }
-      
-      function flip_card(id) {
+
+      function flip_card(card_elem) {
         // 翻牌
-        $(this).toggleClass("flipped");
+        $(card_elem).toggleClass("flipped");
+        console.log("嘗試翻牌");
+        
       }
 
-      function stack_check_front_id(id) {
-        // 翻開的牌和堆疊內的牌同一張嗎(相同front ID)?
-    
-        // if (id == stack.peek()) {
-        //   console.log("同一張，不放進堆疊。");
-        //   return true;
-        // } else {
-        //   console.log("不同張，放進堆疊。");
-        //   if (!(stack.check_is_full())){
-        //     stack.push(id);
-        //   } else {
-        //     console.log("堆疊已滿，不放進堆疊。");
-        //   }
-        //   return false;
-        // }
+      function front_id_to_stack(id) {
+        // 將front id塞進堆疊
+
+        if (id == stack.peek()) {
+          // 若堆疊中已有相同front id，則不允許塞進堆疊，直接return。
+          console.log("同一張，不放進堆疊。");
+          return;
+        }
+
+        // 沒有相同的front id
+        // 先判斷堆疊是否已滿
+        if (!stack.check_is_full()) {
+          // 堆疊還沒滿
+          console.log("不同張，放進堆疊。");
+          // 翻牌
+          flip_card(now_click_card_elem);
+          // 塞進堆疊
+          stack.push(id);
+        } else {
+          // 堆疊滿了
+          
+        }
       }
 
       function game_prepare() {
@@ -268,35 +289,25 @@
       function game() {
         // 進行遊戲
 
-          // 宣告現在點擊的卡片元素
-          let now_click_card_elem = null;
-          // 宣告現在點擊的卡片front元素 
-          let now_click_front_elem = null;
-          // 宣告現在點擊的卡片front ID (字串)
-          let now_click_front_id = null;
-          // 宣告現在點擊的卡片front組別 (字串)
-          let now_click_front_group = null;
+        // 點牌偵測
+        $(".card").click(function () {
+          // 設定現在點擊的卡片元素
+          now_click_card_elem = this;
+          // 設定現在點擊的卡片front元素
+          now_click_front_elem = $(this).children(".front")["0"];
+          // 設定現在點擊的卡片front ID (字串)
+          now_click_front_id = now_click_front_elem["id"];
+          // 設定現在點擊的卡片front組別 (字串)
+          now_click_front_group = now_click_front_id.split("_")[0];
 
+          console.log(now_click_card_elem);
+          console.log(now_click_front_elem);
+          console.log(now_click_front_id);
+          console.log(now_click_front_group);
 
-          // 點牌偵測
-          $(".card").click(function () {
-            // 設定現在點擊的卡片元素
-            now_click_card_elem = this;
-            // 設定現在點擊的卡片front元素
-            now_click_front_elem = $(this).children(".front")["0"];
-            // 設定現在點擊的卡片front ID (字串)
-            now_click_front_id = now_click_front_elem["id"];
-            // 設定現在點擊的卡片front組別 (字串)
-            now_click_front_group = now_click_front_id.split('_')[0];
-
-            console.log(now_click_card_elem);
-            console.log(now_click_front_elem);
-            console.log(now_click_front_id);
-            console.log(now_click_front_group);
-          });
-          
           // 翻開的牌和堆疊內的牌同一張嗎(相同ID)?
-
+          front_id_to_stack(now_click_front_id);
+        });
       }
 
       // function end_game(){
