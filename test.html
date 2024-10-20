@@ -263,36 +263,36 @@
     </div>
     <script>
       const all_hanafudas = [
-        ["p0_1", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
-        ["p0_2", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
-        ["p1_1", "background-image: url(img/Hanafuda/p1_March_Hikari.png);"],
-        ["p1_2", "background-image: url(img/Hanafuda/p1_March_Hikari.png);"],
-        ["p2_1", "background-image: url(img/Hanafuda/p2_August_Hikari.png);"],
-        ["p2_2", "background-image: url(img/Hanafuda/p2_August_Hikari.png);"],
-        ["p3_1", "background-image: url(img/Hanafuda/p3_November_Hikari.png);"],
-        ["p3_2", "background-image: url(img/Hanafuda/p3_November_Hikari.png);"],
-        ["p4_1", "background-image: url(img/Hanafuda/p4_December_Hikari.png);"],
-        ["p4_2", "background-image: url(img/Hanafuda/p4_December_Hikari.png);"],
-        ["p5_1", "background-image: url(img/Hanafuda/p5_February_Tane.png);"],
-        ["p5_2", "background-image: url(img/Hanafuda/p5_February_Tane.png);"],
-        ["p6_1", "background-image: url(img/Hanafuda/p6_July_Tane.png);"],
-        ["p6_2", "background-image: url(img/Hanafuda/p6_July_Tane.png);"],
-        ["p7_1", "background-image: url(img/Hanafuda/p7_May_Tane.png);"],
-        ["p7_2", "background-image: url(img/Hanafuda/p7_May_Tane.png);"],
-        ["p8_1", "background-image: url(img/Hanafuda/p8_March_Kasu_2.png);"],
-        ["p8_2", "background-image: url(img/Hanafuda/p8_March_Kasu_2.png);"],
-        ["p_9_1", "background-image: url(img/Hanafuda/p9_October_Kasu_1.png);"],
-        ["p_9_2", "background-image: url(img/Hanafuda/p9_October_Kasu_1.png);"],
+        ["p00_1", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
+        ["p00_2", "background-image: url(img/Hanafuda/p0_January_Hikari.png);"],
+        ["p01_1", "background-image: url(img/Hanafuda/p1_March_Hikari.png);"],
+        ["p01_2", "background-image: url(img/Hanafuda/p1_March_Hikari.png);"],
+        ["p02_1", "background-image: url(img/Hanafuda/p2_August_Hikari.png);"],
+        ["p02_2", "background-image: url(img/Hanafuda/p2_August_Hikari.png);"],
+        ["p03_1", "background-image: url(img/Hanafuda/p3_November_Hikari.png);"],
+        ["p03_2", "background-image: url(img/Hanafuda/p3_November_Hikari.png);"],
+        ["p04_1", "background-image: url(img/Hanafuda/p4_December_Hikari.png);"],
+        ["p04_2", "background-image: url(img/Hanafuda/p4_December_Hikari.png);"],
+        ["p05_1", "background-image: url(img/Hanafuda/p5_February_Tane.png);"],
+        ["p05_2", "background-image: url(img/Hanafuda/p5_February_Tane.png);"],
+        ["p06_1", "background-image: url(img/Hanafuda/p6_July_Tane.png);"],
+        ["p06_2", "background-image: url(img/Hanafuda/p6_July_Tane.png);"],
+        ["p07_1", "background-image: url(img/Hanafuda/p7_May_Tane.png);"],
+        ["p07_2", "background-image: url(img/Hanafuda/p7_May_Tane.png);"],
+        ["p08_1", "background-image: url(img/Hanafuda/p8_March_Kasu_2.png);"],
+        ["p08_2", "background-image: url(img/Hanafuda/p8_March_Kasu_2.png);"],
+        ["p09_1", "background-image: url(img/Hanafuda/p9_October_Kasu_1.png);"],
+        ["p09_2", "background-image: url(img/Hanafuda/p9_October_Kasu_1.png);"],
         [
-          "p_10_1",
+          "p10_1",
           "background-image: url(img/Hanafuda/p10_December_Kasu_2.png);",
         ],
         [
-          "p_10_2",
+          "p10_2",
           "background-image: url(img/Hanafuda/p10_December_Kasu_2.png);",
         ],
-        ["p_11_1", "background-image: url(img/Hanafuda/p11_October_Tane.png);"],
-        ["p_11_2", "background-image: url(img/Hanafuda/p11_October_Tane.png);"],
+        ["p11_1", "background-image: url(img/Hanafuda/p11_October_Tane.png);"],
+        ["p11_2", "background-image: url(img/Hanafuda/p11_October_Tane.png);"],
       ];
 
       const card_qty = all_hanafudas.length;
@@ -322,16 +322,48 @@
         });
       }
 
+      function check_id(id1, id2){
+        if (id1 == id2) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+
       function game_prepare() {
         shuffle_array(all_hanafudas);
         hanafuda_front_data_setting(all_hanafudas);
       }
 
-      $(document).ready(function () {
-        game_prepare();
+      function game_start() {
+        let flipped_card_qty = 0;
+        let card1_id = 0;
+        let card2_id = 0;
         $(".hanafuda").click(function () {
+          flipped_card_qty++;
+          if (flipped_card_qty % 2){
+            // 翻第一張
+            card1_id = $(this).children(".front")[0].id.split('_')[0];
+            console.log("第一張" + card1_id);
+          } else {
+            // 翻第二張
+            card2_id = $(this).children(".front")[0].id.split('_')[0];
+            console.log("第二張" + card2_id);
+            
+            // 卡片id比對
+            if (check_id(card1_id, card2_id)){
+              console.log("這兩張一樣");
+            } else {
+              console.log("這兩張不一樣");
+            }
+          }
           $(this).toggleClass("flipped");
         });
+      }
+
+      $(document).ready(function () {
+        game_prepare();
+        game_start();
       });
     </script>
   </body>

@@ -50,3 +50,9 @@
 .flipped{
 	transform: rotateY(180deg);
 }
+
+.hidden{
+  transform: rotateY(180deg);
+  visibility: hidden;
+  transition: 1s ease;
+}
