@@ -24,7 +24,9 @@
 .card {
   display: grid;
   transform-style: preserve-3d;
-  transition: 0.5s ease;
+  /* transform: translate3d(0, 0, 0); */
+  /* will-change: transform; */
+  /* transition: 0.5s ease; */
 }
 
 .card>.front,
@@ -49,11 +51,13 @@
 
 .flipped{
 	transform: rotateY(180deg);
+  transition: 0.5s ease;
 }
 
 .recover{
-	transform: rotateY(180deg);
-  transition: 1s ease;
+	transform: rotateY(360deg);
+  transition: 2s ease;
+  /* transition: 2s ease-out; */
 }
 
 .hidden{

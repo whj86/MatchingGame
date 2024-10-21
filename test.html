@@ -210,11 +210,20 @@
             return false;
           }
         }
+        function clear() {
+          items = [];
+        }
+
+        function length() {
+          return items.length;
+        }
         return {
           push,
           pop,
           peek,
           check_is_full,
+          clear,
+          length,
         };
       }
 
@@ -251,11 +260,12 @@
 
       function recover_card(card_elem) {
         // 把牌蓋回去
+        $(card_elem).toggleClass("flipped");
         $(card_elem).toggleClass("recover");
       }
-      
+
       function hidden_card(card_elem) {
-        // 把牌蓋回去
+        // 消失卡牌
         $(card_elem).toggleClass("hidden");
       }
 
@@ -268,29 +278,30 @@
           return;
         }
 
+        // 翻牌
+        flip_card(now_click_card_elem);
+
         // 沒有相同的front id
         // 先判斷堆疊是否已滿
         if (!stack.check_is_full()) {
           // 堆疊還沒滿
           console.log("不同張，放進堆疊。");
-          // 翻牌
-          flip_card(now_click_card_elem);
           // 塞進堆疊
           stack.push(id);
-        } 
+        }
 
         // 塞進堆疊後，看堆疊滿了沒？
-        if (stack.check_is_full()){
+        if (stack.check_is_full()) {
           // 堆疊滿了，接著判斷堆疊中兩張牌是否同組？
           // 邊判斷，邊清堆疊。
 
           let second_card_front_elem = document.getElementById(stack.pop());
           let second_click_card_group = second_card_front_elem.id.split("_")[0];
-          let second_card_elem = $(second_card_front_elem).closest('.card');
+          let second_card_elem = $(second_card_front_elem).closest(".card");
 
           let first_card_front_elem = document.getElementById(stack.pop());
           let first_click_card_group = first_card_front_elem.id.split("_")[0];
-          let first_card_elem = $(first_card_front_elem).closest('.card');
+          let first_card_elem = $(first_card_front_elem).closest(".card");
 
           if (first_click_card_group == second_click_card_group) {
             // 同組，讓兩張牌消失在畫面上。
@@ -299,10 +310,14 @@
             hidden_card(second_card_elem);
           } else {
             // 不同組，讓兩張牌翻回去
-            
-            console.log("已清空堆疊，剛才堆疊中的兩張牌不同組，將這兩張牌翻回去。");
-            // recover_card(second_card_elem);  
-            // recover_card(first_card_elem);
+
+            console.log(
+              "已清空堆疊，剛才堆疊中的兩張牌不同組，將這兩張牌翻回去。"
+            );
+            stack.clear();
+            recover_card(first_card_elem);
+            recover_card(second_card_elem);
+            console.log("堆疊中的元素個數", stack.length());
           }
         }
       }
@@ -332,9 +347,9 @@
           // 設定現在點擊的卡片front組別 (字串)
           // now_click_front_group = now_click_front_id.split("_")[0];
 
-          console.log(now_click_card_elem);
-          console.log(now_click_front_elem);
-          console.log(now_click_front_id);
+          // console.log(now_click_card_elem);
+          // console.log(now_click_front_elem);
+          // console.log(now_click_front_id);
           // console.log(now_click_front_group);
 
           // 翻開的牌和堆疊內的牌同一張嗎(相同ID)?
