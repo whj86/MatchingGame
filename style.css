@@ -5,11 +5,11 @@
   display: flex;
 }
 
-.left_part{
+.left_part {
   flex: 8;
 }
 
-.right_part{
+.right_part {
   flex: 4;
   background-color: #bbb;
 }
@@ -24,13 +24,10 @@
 .card {
   display: grid;
   transform-style: preserve-3d;
-  /* transform: translate3d(0, 0, 0); */
-  /* will-change: transform; */
-  /* transition: 0.5s ease; */
 }
 
-.card>.front,
-.card>.back {
+.card > .front,
+.card > .back {
   grid-area: 1 / 1 / 2 / 2;
   height: 150px;
   width: 90px;
@@ -49,19 +46,13 @@
   backface-visibility: hidden;
 }
 
-.flipped{
-	transform: rotateY(180deg);
+.flipped {
+  transform: rotateY(180deg);
   transition: 0.5s ease;
 }
 
-.recover{
-	transform: rotateY(360deg);
-  transition: 2s ease;
-  /* transition: 2s ease-out; */
-}
-
-.hidden{
+.hidden {
   transform: rotateY(180deg);
+  transition: 0.5s ease;
   visibility: hidden;
-  transition: 1s ease;
 }
