@@ -401,7 +401,13 @@
                 $("popup-box")
                   .removeClass("transform-out")
                   .addClass("transform-in");
-                
+
+                if (seconds < 10) {
+                  seconds = "0" + seconds;
+                }
+                if (minutes < 10) {
+                  minutes = "0" + minutes; 
+                }
                 $("#endGamePopUpText").text("Your score: " + minutes + ":" + seconds);
                 $(".popup-close").click(function () {
                   closeWindow();
