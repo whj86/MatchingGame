@@ -116,11 +116,14 @@
         </div>
       </div>
       <div class="right_part">
+        <div id="stopwatchText">Time</div>
         <!-- 設計碼表(stopwatch)，計時玩家遊玩時間 -->
         <p id="stopwatch">
-          <span id="minutes">00</span>
+          <span id="minutes_tens">0</span>
+          <span id="minutes_units">0</span>
           <span id="colon">:</span>
-          <span id="seconds">00</span>
+          <span id="seconds_tens">0</span>
+          <span id="seconds_units">0</span>
         </p>
       </div>
     </div>
@@ -290,38 +293,29 @@
       function startTimer() {
         seconds++;
 
+        let seconds_units = seconds % 10;
+        let seconds_tens = Math.floor(seconds / 10);
 
-        // seconds: 0~9
-        if (seconds <= 9) {
-          $("#seconds").text("0" + seconds);
-        }
-
-        // seconds: 10~59
-        if (10 <= seconds && seconds <= 59) {          
-          $("#seconds").text(seconds);
-        }
-
-        // seconds: 60
-        if (seconds == 60) {
+        if (seconds <= 59) {
+          $("#seconds_units").text(seconds_units);
+          $("#seconds_tens").text(seconds_tens);
+        } else if (seconds == 60) {
           seconds = 0;
-          $("#seconds").text("0" + seconds);
+          $("#seconds_units").text("0");
+          $("#seconds_tens").text("0");
           minutes++;
         }
-        
-        // minutes: 0~9
-        if (minutes <= 9) {
-          $("#minutes").text("0" + minutes);
-        }
 
-        // minutes: 10~59
-        if (10 <= minutes && minutes <= 59) {
-          $("#minutes").text(minutes);
-        }
+        let minutes_units = minutes % 10;
+        let minutes_tens = Math.floor(minutes / 10);
 
-        // minutes: 60
-        if (minutes == 60) {
+        if (minutes <= 59) {
+          $("#minutes_units").text(minutes_units);
+          $("#minutes_tens").text(minutes_tens);
+        } else if (minutes == 60) {
           minutes = 0;
-          $("#minutes").text("0" + minutes);
+          $("#minutes_units").text("0");
+          $("#minutes_tens").text("0");
         }
       }
 

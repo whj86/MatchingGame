@@ -15,10 +15,14 @@
 .right_part {
   flex: 4;
   border: 3px solid #c5d5fa;
+  background-color: #ddd;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .row {
@@ -107,19 +111,32 @@
   }
 } */
 
-
 /* ====碼表==== */
+#stopwatchText {
+  padding: 10px;
+  width: 100%;
+  font-size: 70px;
+  text-align: center;
+  background-color: #457b9d;
+  color: #d1f2eb; 
+  border-bottom: 3px solid #bbb;
+}
+
 #stopwatch {
   display: flex;
   justify-content: space-evenly;
-  border: 5px solid burlywood;
-  padding: 10px;
+  background-color: #457b9d;
+  margin-top: 0;
+  width: 100%;
 }
 
-#minutes, #seconds {
-  width: 100px;
+#minutes_units,
+#minutes_tens,
+#seconds_units,
+#seconds_tens {
+  width: 80px;
   font-size: 80px;
-  color: orange;
+  color: #d1f2eb;
   text-align: center;
   padding: 2px;
 }
@@ -128,6 +145,6 @@
   width: 70px;
   font-size: 70px;
   text-align: center;
-  color: orange;
+  color: #d1f2eb;
 }
 /* ====碼表==== */
