@@ -152,6 +152,12 @@
       // 宣告堆疊
       let stack = null;
 
+      let delay = function (s) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(resolve, s);
+        });
+      };
+
       // 檯面上剩餘卡牌數量 (未使用)
       // let unused_card_qty = card_qty;
 
@@ -235,14 +241,10 @@
             let up_card_id = parseInt(stack.pop()); // 堆疊上方卡片ID(數字)
             let down_card_id = parseInt(stack.pop()); // 堆疊下方卡片ID(數字)
 
-            if (all_cards_data[up_card_id][0] != all_cards_data[down_card_id][0]) {
-            //  比對兩張卡的圖是否同組
-
-              let delay = function (s) {
-                return new Promise(function (resolve, reject) {
-                  setTimeout(resolve, s);
-                });
-              };
+            if (
+              all_cards_data[up_card_id][0] != all_cards_data[down_card_id][0]
+            ) {
+              //  比對兩張卡的圖是否同組
               delay()
                 .then(function () {
                   return delay(1000); // 延遲ㄧ秒
@@ -286,6 +288,16 @@
 
       function game() {
         // 進行遊戲
+
+        delay()
+          .then(function () {
+            $(".card").toggleClass("flipped");
+            return delay(3000); // 延遲秒
+          })
+          .then(function () {
+            // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
+            $(".card").toggleClass("flipped");
+          });
 
         $(".card").on("click", function () {
           // 點牌偵測
