@@ -115,7 +115,14 @@
           </div>
         </div>
       </div>
-      <div class="right_part"></div>
+      <div class="right_part">
+        <!-- 設計碼表(stopwatch)，計時玩家遊玩時間 -->
+        <p id="stopwatch">
+          <span id="minutes">00</span>
+          <span id="colon">:</span>
+          <span id="seconds">00</span>
+        </p>
+      </div>
     </div>
     <script>
       // 設定卡牌的圖片資料: 圖組別、圖來源、被翻次數
@@ -152,6 +159,12 @@
       // 宣告堆疊
       let stack = null;
 
+      // 定義用以計時的變數interval
+      let interval = 0;
+      let seconds = 0;
+      let minutes = 0;
+
+      // 用Promise達到延遲時間
       let delay = function (s) {
         return new Promise(function (resolve, reject) {
           setTimeout(resolve, s);
@@ -159,7 +172,7 @@
       };
 
       // 檯面上剩餘卡牌數量 (未使用)
-      // let unused_card_qty = card_qty;
+      let unused_card_qty = card_qty;
 
       function Stack() {
         // 定義堆疊，存放代表卡牌ID的字串。
@@ -258,6 +271,7 @@
               // 配對成功，隱藏(消掉)卡牌。
               hidden_card(up_card_id);
               hidden_card(down_card_id);
+              unused_card_qty -= 2;
             }
           }
         }
@@ -271,6 +285,44 @@
       function hidden_card(card_id) {
         // 隱藏(消失)卡牌
         $("#" + card_id).toggleClass("hidden");
+      }
+
+      function startTimer() {
+        seconds++;
+
+
+        // seconds: 0~9
+        if (seconds <= 9) {
+          $("#seconds").text("0" + seconds);
+        }
+
+        // seconds: 10~59
+        if (10 <= seconds && seconds <= 59) {          
+          $("#seconds").text(seconds);
+        }
+
+        // seconds: 60
+        if (seconds == 60) {
+          seconds = 0;
+          $("#seconds").text("0" + seconds);
+          minutes++;
+        }
+        
+        // minutes: 0~9
+        if (minutes <= 9) {
+          $("#minutes").text("0" + minutes);
+        }
+
+        // minutes: 10~59
+        if (10 <= minutes && minutes <= 59) {
+          $("#minutes").text(minutes);
+        }
+
+        // minutes: 60
+        if (minutes == 60) {
+          minutes = 0;
+          $("#minutes").text("0" + minutes);
+        }
       }
 
       function game_prepare() {
@@ -292,28 +344,43 @@
         delay()
           .then(function () {
             $(".card").toggleClass("flipped");
-            return delay(3000); // 延遲秒
+            return delay(3000); // 延遲三秒(讓玩家先記三秒)
           })
           .then(function () {
             // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
             $(".card").toggleClass("flipped");
           });
 
+        // 計時器開跑變數
+        let stopwatchStart = 0;
         $(".card").on("click", function () {
           // 點牌偵測
+
+          // 第一次翻牌就讓計時器開跑
+          if (!stopwatchStart) {
+            clearInterval(interval);
+            interval = setInterval(startTimer, 1000);
+            stopwatchStart = 1;
+          }
+
           // 從卡片元素抓出card id送到stack，stack會決定要不要處理。
           try_matching(this["id"]);
         });
+
+        if (!unused_card_qty) {
+          return;
+        }
       }
 
-      // function end_game(){
-      //   // 結束遊戲
-      // }
+      function end_game() {
+        // 結束遊戲
+        clearInterval(interval);
+      }
 
       $(document).ready(function () {
         game_prepare();
         game();
-        // end_game();
+        end_game();
       });
     </script>
   </body>
