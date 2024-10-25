@@ -230,6 +230,17 @@
           let j = Math.floor(Math.random() * (i + 1));
           [array[i], array[j]] = [array[j], array[i]];
         }
+
+        //  ====測試用 在console偷看答案====
+        let answer = "";
+        for (let i = 0; i < array.length; i++) {
+          answer += array[i][0] + "\t";
+          if (i % 6 == 5) {
+            answer += "\n";
+          }
+        }
+        console.log(answer);
+        //  ====測試用 在console偷看答案====
       }
 
       function photo_card_front_combine() {
@@ -359,22 +370,30 @@
 
           // 從卡片元素抓出card id送到stack，stack會決定要不要處理。
           try_matching(this["id"]);
+
+          if (!unused_card_qty) {
+            delay()
+              .then(function () {
+                clearInterval(interval);
+                return delay(2000); // 延遲兩秒再跳出遊戲結束視窗
+              })
+              .then(function () {
+                alert("遊戲結束");
+              });
+            return;
+          }
         });
-
-        if (!unused_card_qty) {
-          return;
-        }
       }
 
-      function end_game() {
-        // 結束遊戲
-        clearInterval(interval);
-      }
+      // function end_game() {
+      //   // 結束遊戲
+
+      // }
 
       $(document).ready(function () {
         game_prepare();
         game();
-        end_game();
+        // end_game();
       });
     </script>
   </body>
