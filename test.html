@@ -128,18 +128,16 @@
       </div>
     </div>
 
-    <!-- 遊戲結束框 -->
-    <!-- <div class="wrap">
-      <a class="btn popup-btn" href="#letmeopen">打開popup視窗</a>
-    </div> -->
+    <!-- 遊戲結束提示框 -->
     <div class="popup-wrap" id="letmeopen">
       <div class="popup-box transform-out">
-        <h2>遊戲結束！</h2>
-        <!-- <h3>內容可以打很多在這裡</h3> -->
+        <h2 id="endGamePopUpTitle">Complete！</h2>
+        <h3 id="endGamePopUpText"></h3>
         <a class="close-btn popup-close" href="#">x</a>
       </div>
     </div>
-    <!-- 遊戲結束框 -->
+    <!-- 遊戲結束提示框 -->
+
     <script>
       // 設定卡牌的圖片資料: 圖組別、圖來源、被翻次數
       let all_cards_data = [
@@ -344,6 +342,7 @@
       }
 
       function closeWindow() {
+        // 點擊X以關閉遊戲結束提示框
         $(".popup-wrap").fadeOut(200);
         $(".popup-box").removeClass("transform-in").addClass("transform-out");
         event.preventDefault();
@@ -394,17 +393,16 @@
             delay()
               .then(function () {
                 clearInterval(interval);
-                return delay(1000); // 延遲一秒再跳出遊戲結束框
+                return delay(1000); // 延遲一秒再跳出遊戲結束提示框
               })
               .then(function () {
-                // alert("遊戲結束");
-
+                // 跳出遊戲結束提示框
                 $("#letmeopen").fadeIn(250);
-                
                 $("popup-box")
                   .removeClass("transform-out")
                   .addClass("transform-in");
-
+                
+                $("#endGamePopUpText").text("Your score: " + minutes + ":" + seconds);
                 $(".popup-close").click(function () {
                   closeWindow();
                 });

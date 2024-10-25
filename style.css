@@ -155,13 +155,6 @@
   text-align: center;
   padding-top: 20%;
 }
-/* .btn {
-  background-color: #FFB80C;
-  text-decoration: none;
-  color: #1e1e1e;
-  padding: 16px;
-  border-radius: 5px;
-} */
 
 .popup-wrap {
   width: 100%;
@@ -183,16 +176,20 @@
   left: 50%;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.5);
   border-radius: 3px;
-  background: #fff;
+  /* background: #ddd; */
+  background: #fffde0;
   text-align: center;
 }
-h2 {
-  font-size: 32px;
-  color: #1a1a1a;
+
+#endGamePopUpTitle {
+  font-size: 80px;
+  /* font-size: 32px; */
+  /* color: #1a1a1a; */
+  color: #E9C46A;
 }
 
-h3 {
-  font-size: 24px;
+#endGamePopUpText {
+  font-size: 70px;
   color: #888;
 }
 
