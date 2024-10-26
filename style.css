@@ -2,31 +2,44 @@
   border: 2px solid orange;
 } */
 
+/* Google Fonts: Noto Sans TC */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
+* {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+/* Google Fonts: Noto Sans TC */
+
 body {
   display: flex;
   background-color: #2c2c2c;
   justify-content: center;
   align-items: center;
-  padding: 70px;
+  height: 100vh;
+  margin: 0;
 }
 
 .game_scene {
   display: flex;
-  width: 90%;
+  width: 80%;
   background-image: linear-gradient(297deg, #FAACA8 0%, #DDD6F3 100%);
+  padding-right: 10px;
 }
 
 .left_part {
   flex: 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .right_part {
   flex: 4;
-  /* border-left: 3px solid #ddd; */
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: space-evenly;
-  padding-right: 5px;
 }
 
 .row {
@@ -81,7 +94,6 @@ body {
 #stopwatch {
   width: 100%;
   overflow: hidden;
-  /* border-top-right-radius: 8px; */
   border-radius: 8px;
 }
 
@@ -91,6 +103,7 @@ body {
   background-color: #105782;
   color: #d1f2eb;
   border-bottom: 3px solid #ddd;
+  cursor: default;
 }
 
 #stopwatch_time {
@@ -110,6 +123,7 @@ body {
   color: #d1f2eb;
   text-align: center;
   padding: 2px;
+  cursor: default;
 }
 
 #colon {
@@ -117,6 +131,7 @@ body {
   font-size: 70px;
   text-align: center;
   color: #d1f2eb;
+  cursor: default;
 }
 /* ====碼表==== */
 
@@ -280,52 +295,28 @@ tr:not(:first-child):hover {
 }
 
 tr:first-child:hover {
-  /* background-color: #fff; */
   transform: scale(1.1);
-  /* -webkit-box-shadow: 0px 5px 15px 8px #e4e7fb; */
-  /* box-shadow: 0px 5px 15px 8px #e4e7fb; */
 }
-
-/* tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
-
-tr:nth-child(1) {
-  color: #fff;
-} */
 
 td {
-  /* height: 5rem; */
   height: 10px;
-  /* font-family: "Rubik", sans-serif; */
-  /* font-size: 1.4rem; */
   font-size: 30px;
   padding: 1rem 2rem;
   position: relative;
 }
 
 .number {
-  /* width: 1rem; */
   height: 5px;
-  /* font-size: ; */
   font-size: 30px;
-  font-weight: bold;
   text-align: left;
 }
 
 .points {
-  font-weight: bold;
-  /* font-size: 1.3rem; */
-  font-size: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 100%;
 }
-
-/* .points:first-child {
-  width: 10rem;
-} */
 
 .gold-medal {
   height: 3rem;
@@ -335,64 +326,18 @@ td {
 .ribbon {
   width: 42rem;
   height: 5rem;
-  /* top: -0.5rem; */
-
   background-color: hwb(0 51% 1%);
   position: absolute;
   left: -1rem;
-  /* -webkit-box-shadow: 0px 15px 11px -6px #7a7a7d;
-  box-shadow: 0px 15px 11px -6px #7a7a7d; */
 }
-
-/* .ribbon::before {
-  content: "";
-  height: 1.5rem;
-  width: 1.5rem;
-  bottom: -0.8rem;
-  left: 0.35rem;
-  transform: rotate(45deg);
-  background-color: #5c5be5;
-  position: absolute;
-  z-index: -1;
-}
-
-.ribbon::after {
-  content: "";
-  height: 1.5rem;
-  width: 1.5rem;
-  bottom: -0.8rem;
-  right: 0.35rem;
-  transform: rotate(45deg);
-  background-color: #5c5be5;
-  position: absolute;
-  z-index: -1;
-} */
-
-/* @media (max-width: 740px) {
-    * {
-      font-size: 70%;
-    }
-}
-
-@media (max-width: 500px) {
-    * {
-      font-size: 55%;
-    }
-}
-
-@media (max-width: 390px) {
-    * {
-      font-size: 45%;
-    }
-} */
 /* 遊戲紀錄排行 leaderboard */
 
-/* 關於作者 */
-#about_author {
+/* 控制面板 */
+#control_panel {
   background-color: #fff;
   border-radius: 8px;
   text-align: center;
   font-size: 60px;
   color: hwb(185 24% 12%);
 }
-/* 關於作者 */
+/* 控制面板 */
