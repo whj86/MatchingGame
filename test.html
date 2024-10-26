@@ -116,7 +116,7 @@
         </div>
       </div>
       <div class="right_part">
-        <!-- 設計碼表(stopwatch)，計時玩家遊玩時間 -->
+        <!-- 碼表(stopwatch) -->
         <div id="stopwatch">
           <div id="stopwatch_text">Time</div>
           <p id="stopwatch_time">
@@ -127,6 +127,46 @@
             <span id="seconds_units">0</span>
           </p>
         </div>
+        <!-- 碼表(stopwatch) -->
+        
+        <!-- 遊戲紀錄排行 leaderboard -->
+        <main>
+          <div id="header">
+            <h1>Leaderboard</h1>
+          </div>
+          <div id="leaderboard">
+            <div class="ribbon"></div>
+            <table>
+              <tr>
+                <td class="number">1</td>
+                <td class="points">
+                  00:58
+                  <img
+                    class="gold-medal"
+                    src="img/gold-medal.png"
+                    alt="gold medal"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="number">2</td>
+                <td class="points">01:10</td>
+              </tr>
+              <tr>
+                <td class="number">3</td>
+                <td class="points">01:30</td>
+              </tr>
+              <tr>
+                <td class="number">4</td>
+                <td class="points">01:30</td>
+              </tr>
+            </table>
+          </div>
+        </main>
+        <!-- 遊戲紀錄排行 leaderboard -->
+
+        
+        <div id="about_author">HongJun</div>
       </div>
     </div>
 
@@ -369,7 +409,7 @@
         delay()
           .then(function () {
             $(".card").toggleClass("flipped");
-            return delay(5000); // 延遲三秒(讓玩家先記三秒)
+            return delay(5000); // 延遲五秒(讓玩家先記五秒)
           })
           .then(function () {
             // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
