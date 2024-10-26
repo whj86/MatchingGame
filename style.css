@@ -3,7 +3,7 @@
 } */
 
 /* Google Fonts: Noto Sans TC */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 * {
   font-family: "Noto Sans TC", sans-serif;
@@ -24,7 +24,7 @@ body {
 .game_scene {
   display: flex;
   width: 80%;
-  background-image: linear-gradient(297deg, #FAACA8 0%, #DDD6F3 100%);
+  background-image: linear-gradient(297deg, #faaca8 0%, #ddd6f3 100%);
   padding-right: 10px;
 }
 
@@ -216,30 +216,39 @@ body {
   border-radius: var(--borderWidth);
 }
 .gradient-border:after {
-  content: '';
+  content: "";
   position: absolute;
   top: calc(-1 * var(--borderWidth));
   left: calc(-1 * var(--borderWidth));
   height: calc(100% + var(--borderWidth) * 2);
   width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
   animation: animatedgradient 5s ease alternate infinite;
   background-size: 300% 300%;
 }
 
-
 @keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 /* 漸層邊框gradient border */
 
@@ -339,7 +348,7 @@ td {
   text-align: center;
   font-size: 60px;
   color: hwb(185 24% 12%);
-  
+
   display: flex;
 }
 
@@ -347,12 +356,25 @@ td {
 #broom_icon {
   width: 70px;
   height: 70px;
+  position: relative;
 }
 
 #broom_icon:hover {
   cursor: pointer;
   background-color: #ddd;
   border-radius: 8px;
+}
+
+#broom_icon:hover::before {
+  position: absolute;
+  top: -45px;
+  left: 0;
+  color: #fff;
+  font-size: 13px;
+  background: #346e7a;
+  padding: 5px;
+  border-radius: 5px;
+  content: "Clear Leaderboard";
 }
 
 #broom_img {
@@ -362,7 +384,4 @@ td {
 }
 /* 掃把(清空分數排行榜) */
 
-
-
 /* 控制面板 */
-
