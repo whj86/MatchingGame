@@ -139,7 +139,7 @@
             <table>
               <tr>
                 <td class="number">1</td>
-                <td class="points">
+                <td class="score" id="score_0">
                   00:58
                   <img
                     class="gold-medal"
@@ -148,17 +148,17 @@
                   />
                 </td>
               </tr>
-              <tr style="border-top: none;">
+              <tr style="border-top: none">
                 <td class="number">2</td>
-                <td class="points">01:10</td>
+                <td class="score" id="score_1">01:10</td>
               </tr>
               <tr>
                 <td class="number">3</td>
-                <td class="points">02:30</td>
+                <td class="score" id="score_2">02:30</td>
               </tr>
               <tr>
                 <td class="number">4</td>
-                <td class="points">01:11</td>
+                <td class="score" id="score_3">01:11</td>
               </tr>
             </table>
           </div>
@@ -228,6 +228,13 @@
 
       // 檯面上剩餘卡牌數量 (未使用)
       let unused_card_qty = card_qty;
+
+      // 定義計分板列數為一常數
+      const leaderboard_rows = 4;
+
+      // 定義localstorage陣列，存取計分板分數。
+      // 陣列大小比計分板多一格，多存此次分數。
+      let leaderboard_data = new Array(leaderboard_rows + 1);
 
       function Stack() {
         // 定義堆疊，存放代表卡牌ID的字串。
@@ -389,6 +396,45 @@
         event.preventDefault();
       }
 
+      function set_leaderboard() {
+        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。
+        
+        for (let i = 0; i < leaderboard_rows; i++) {
+          let data = parseInt(localStorage.getItem(i));
+          console.log(data);
+          
+          if (!data) {
+            // 沒資料時把值設超大
+            leaderboard_data[i] = 99999;
+          } else {
+            // 把第一名到第四名時間存進陣列，留待與此次分數比較排名。
+            leaderboard_data[i] = data;
+          }
+        }
+        // 此次分數先初始化為99999
+        leaderboard_data[leaderboard_rows] = 99999;
+
+        // 時間由少到多寫到計分板上。
+        for (let i = 0; i < leaderboard_rows; i++){
+          let score = leaderboard_data[i];
+          if (score == 99999) {
+            $("#score_" + i).text("");
+          } else {
+            let leaderboard_minutes = Math.floor(score / 60);
+            let leaderboard_seconds = score % 60;
+            if (leaderboard_minutes < 10) {
+              leaderboard_minutes = "0" + leaderboard_minutes;
+            }
+            if (leaderboard_seconds < 10) {
+              leaderboard_seconds = "0" + leaderboard_seconds;
+            }
+            $("#score_" + i).text(
+              leaderboard_minutes + ":" + leaderboard_seconds
+            );
+          }
+        }
+      }
+
       function game_prepare() {
         // 準備遊戲
 
@@ -400,6 +446,9 @@
 
         // 堆疊初始化
         stack_initialize();
+
+        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。
+        set_leaderboard();
       }
 
       function game() {
@@ -442,7 +491,6 @@
                 $("popup-box")
                   .removeClass("transform-out")
                   .addClass("transform-in");
-
                 if (seconds < 10) {
                   seconds = "0" + seconds;
                 }
@@ -455,6 +503,14 @@
                 $(".popup-close").click(function () {
                   closeWindow();
                 });
+
+                // 遊戲時間轉成總秒數，塞到leaderboard_data最後一格，排序後送到localstorage儲存，並更新記分板。
+                leaderboard_data[leaderboard_rows] = parseInt(minutes) * 60 + parseInt(seconds);
+                leaderboard_data.sort();
+                for (let i = 0; i < leaderboard_rows; i++) {
+                  localStorage.setItem(i, leaderboard_data[i]);
+                }
+                set_leaderboard();
               });
             return;
           }
@@ -462,6 +518,8 @@
       }
 
       $(document).ready(function () {
+        // 清除localstorage(debug用)
+        // localStorage.clear();
         game_prepare();
         game();
       });

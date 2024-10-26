@@ -311,7 +311,7 @@ td {
   text-align: left;
 }
 
-.points {
+.score {
   display: flex;
   justify-content: flex-end;
   align-items: center;
