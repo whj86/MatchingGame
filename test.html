@@ -8,7 +8,7 @@
     <script src="jquery-3.7.1.js"></script>
   </head>
   <body>
-    <div class="game_scene">
+    <div class="game_scene gradient-border">
       <div class="left_part">
         <div class="row row0">
           <div class="card" id="0">
@@ -116,15 +116,17 @@
         </div>
       </div>
       <div class="right_part">
-        <div id="stopwatchText">Time</div>
         <!-- 設計碼表(stopwatch)，計時玩家遊玩時間 -->
-        <p id="stopwatch">
-          <span id="minutes_tens">0</span>
-          <span id="minutes_units">0</span>
-          <span id="colon">:</span>
-          <span id="seconds_tens">0</span>
-          <span id="seconds_units">0</span>
-        </p>
+        <div id="stopwatch">
+          <div id="stopwatch_text">Time</div>
+          <p id="stopwatch_time">
+            <span id="minutes_tens">0</span>
+            <span id="minutes_units">0</span>
+            <span id="colon">:</span>
+            <span id="seconds_tens">0</span>
+            <span id="seconds_units">0</span>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -367,7 +369,7 @@
         delay()
           .then(function () {
             $(".card").toggleClass("flipped");
-            return delay(3000); // 延遲三秒(讓玩家先記三秒)
+            return delay(5000); // 延遲三秒(讓玩家先記三秒)
           })
           .then(function () {
             // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
@@ -406,9 +408,11 @@
                   seconds = "0" + seconds;
                 }
                 if (minutes < 10) {
-                  minutes = "0" + minutes; 
+                  minutes = "0" + minutes;
                 }
-                $("#endGamePopUpText").text("Your score: " + minutes + ":" + seconds);
+                $("#endGamePopUpText").text(
+                  "Your score: " + minutes + ":" + seconds
+                );
                 $(".popup-close").click(function () {
                   closeWindow();
                 });
@@ -418,14 +422,9 @@
         });
       }
 
-      // function end_game() {
-      //   // 結束遊戲
-      // }
-
       $(document).ready(function () {
         game_prepare();
         game();
-        // end_game();
       });
     </script>
   </body>
