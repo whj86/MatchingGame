@@ -165,7 +165,12 @@
         </main>
         <!-- 遊戲紀錄排行 leaderboard -->
 
-        <div id="control_panel">控制面板</div>
+        <!-- 控制面板 -->
+        <div id="control_panel">
+          <div id="broom_icon"><img src="./img/broom.png" alt="broom" id="broom_img"></div>
+          
+        </div>
+        <!-- 控制面板 -->
       </div>
     </div>
 
@@ -396,8 +401,9 @@
         event.preventDefault();
       }
 
-      function set_leaderboard() {
-        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。
+      function update_leaderboard() {
+        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。(localstorage只存最好的四筆分數)
+        // localstorage(0 ~ leaderboard_rows - 1) => leaderboard_data陣列(0 ~ leaderboard_rows) => leaderboard計分板(0 ~ leaderboard_rows - 1)
         
         for (let i = 0; i < leaderboard_rows; i++) {
           let data = parseInt(localStorage.getItem(i));
@@ -447,8 +453,9 @@
         // 堆疊初始化
         stack_initialize();
 
-        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。
-        set_leaderboard();
+        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。(localstorage只存最好的四筆分數)
+        // localstorage => leaderboard_data陣列 => leaderboard計分板
+        update_leaderboard();
       }
 
       function game() {
@@ -504,7 +511,7 @@
                   closeWindow();
                 });
 
-                // 遊戲時間轉成總秒數，塞到leaderboard_data最後一格，排序後送到localstorage儲存，並更新記分板。
+                // 遊戲時間轉成總秒數，塞到leaderboard_data最後一格，排序後除了最後一格外，都送到localstorage儲存，並更新記分板。
                 leaderboard_data[leaderboard_rows] = parseInt(minutes) * 60 + parseInt(seconds);
                 leaderboard_data.sort();
                 for (let i = 0; i < leaderboard_rows; i++) {

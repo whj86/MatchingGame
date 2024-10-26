@@ -339,5 +339,30 @@ td {
   text-align: center;
   font-size: 60px;
   color: hwb(185 24% 12%);
+  
+  display: flex;
 }
+
+/* 掃把(清空分數排行榜) */
+#broom_icon {
+  width: 70px;
+  height: 70px;
+}
+
+#broom_icon:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  border-radius: 8px;
+}
+
+#broom_img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+/* 掃把(清空分數排行榜) */
+
+
+
 /* 控制面板 */
+
