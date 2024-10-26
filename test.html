@@ -234,11 +234,11 @@
       // 檯面上剩餘卡牌數量 (未使用)
       let unused_card_qty = card_qty;
 
-      // 定義計分板列數為一常數
+      // 定義分數排行榜列數為一常數
       const leaderboard_rows = 4;
 
-      // 定義localstorage陣列，存取計分板分數。
-      // 陣列大小比計分板多一格，多存此次分數。
+      // 定義localstorage陣列，存取分數排行榜分數。
+      // 陣列大小比分數排行榜多一格，多存此次分數。
       let leaderboard_data = new Array(leaderboard_rows + 1);
 
       function Stack() {
@@ -402,8 +402,8 @@
       }
 
       function update_leaderboard() {
-        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。(localstorage只存最好的四筆分數)
-        // localstorage(0 ~ leaderboard_rows - 1) => leaderboard_data陣列(0 ~ leaderboard_rows) => leaderboard計分板(0 ~ leaderboard_rows - 1)
+        // 讀取localstorage，載入歷史遊戲分數到分數排行榜陣列。(localstorage只存最好的四筆分數)
+        // localstorage(0 ~ leaderboard_rows - 1) => leaderboard_data陣列(0 ~ leaderboard_rows) => leaderboard分數排行榜(0 ~ leaderboard_rows - 1)
         
         for (let i = 0; i < leaderboard_rows; i++) {
           let data = parseInt(localStorage.getItem(i));
@@ -420,7 +420,7 @@
         // 此次分數先初始化為99999
         leaderboard_data[leaderboard_rows] = 99999;
 
-        // 時間由少到多寫到計分板上。
+        // 時間由少到多寫到分數排行榜上。
         for (let i = 0; i < leaderboard_rows; i++){
           let score = leaderboard_data[i];
           if (score == 99999) {
@@ -441,6 +441,12 @@
         }
       }
 
+      function clear_history(){
+        // 清除localstorage並更新分數排行榜
+        localStorage.clear();
+        update_leaderboard();
+      }
+
       function game_prepare() {
         // 準備遊戲
 
@@ -453,8 +459,8 @@
         // 堆疊初始化
         stack_initialize();
 
-        // 讀取localstorage，載入歷史遊戲分數到計分板陣列。(localstorage只存最好的四筆分數)
-        // localstorage => leaderboard_data陣列 => leaderboard計分板
+        // 讀取localstorage，載入歷史遊戲分數到分數排行榜陣列。(localstorage只存最好的四筆分數)
+        // localstorage => leaderboard_data陣列 => leaderboard分數排行榜
         update_leaderboard();
       }
 
@@ -517,16 +523,18 @@
                 for (let i = 0; i < leaderboard_rows; i++) {
                   localStorage.setItem(i, leaderboard_data[i]);
                 }
-                set_leaderboard();
+                update_leaderboard();
               });
             return;
           }
         });
+
+        $("#broom_icon").on("click", function() {
+          clear_history();
+        });
       }
 
       $(document).ready(function () {
-        // 清除localstorage(debug用)
-        // localStorage.clear();
         game_prepare();
         game();
       });

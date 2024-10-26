@@ -243,7 +243,7 @@ body {
 }
 /* 漸層邊框gradient border */
 
-/* 遊戲紀錄排行 leaderboard */
+/* 遊戲分數排行榜 leaderboard */
 main {
   overflow: hidden;
   background-color: #ffffff;
@@ -330,7 +330,7 @@ td {
   position: absolute;
   left: -1rem;
 }
-/* 遊戲紀錄排行 leaderboard */
+/* 遊戲分數排行榜 leaderboard */
 
 /* 控制面板 */
 #control_panel {
