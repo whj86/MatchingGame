@@ -343,15 +343,21 @@
               //  比對兩張卡的圖是否同組
               delay()
                 .then(function () {
+                  $("#" + up_card_id).toggleClass("disabled");
+                  $("#" + down_card_id).toggleClass("disabled");
                   return delay(1000); // 延遲ㄧ秒
                 })
                 .then(function () {
                   // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
                   flip_card(up_card_id);
                   flip_card(down_card_id);
+                  $("#" + up_card_id).toggleClass("disabled");
+                  $("#" + down_card_id).toggleClass("disabled");
                 });
             } else {
               // 配對成功，隱藏(消掉)卡牌。
+              $("#" + up_card_id).toggleClass("disabled");
+              $("#" + down_card_id).toggleClass("disabled");
               hidden_card(up_card_id);
               hidden_card(down_card_id);
               unused_card_qty -= 2;
