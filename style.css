@@ -394,6 +394,10 @@ td {
   content: "Music Switch";
 }
 
+/* github icon hover 氣泡提示框文字 */
+#github_icon:hover::before {
+  content: "GitHub";
+}
 /* ====控制面板==== */
 
 /* ====start icon==== */
