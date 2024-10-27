@@ -1,4 +1,5 @@
-# Title
+# Introduction
+
 This is a memory matching game.
 
 I am practicing web development skills through this project.
@@ -7,8 +8,6 @@ Feel free to play and provide feedback.
 
 Thank you!
 
----
-
 # Source of Materials
 
 [Again icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/again)
@@ -16,8 +15,6 @@ Thank you!
 [Mute icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/mute)
 [Ui icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/ui)
 [Background music created by 煉獄庭園](https://note.com/rengokuteien/n/n0f6dc2ab7bab)
-
----
 
 # License
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Matching Game</title>
     <link rel="stylesheet" href="style.css" />
     <script src="jquery-3.7.1.js"></script>
   </head>
@@ -11,6 +11,8 @@
     <div class="game_scene gradient-border">
       <div class="left_part">
         <div id="start_icon">Start!</div>
+        <div id="finish_text_1"></div>
+        <div id="finish_text_2"></div>
         <div class="row row0">
           <div class="card" id="0">
             <div class="front"></div>
@@ -584,6 +586,10 @@
                   localStorage.setItem(i, leaderboard_data[i]);
                 }
                 update_leaderboard();
+
+                // 顯示finish文字
+                $("#finish_text_1").text('Nice work!');
+                $("#finish_text_2").text('Click the "New Game" icon to play again!');
               });
             return;
           }
@@ -591,6 +597,8 @@
 
         // 點擊restart icon => 重新整理頁面
         $("#restart_icon").on("click", function () {
+          $("#finish_text_1").text("");
+          $("#finish_text_2").text("");
           game_prepare();
         });
 

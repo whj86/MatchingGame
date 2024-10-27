@@ -434,3 +434,24 @@ td {
   cursor: not-allowed;
 }
 /* ====禁止點擊click==== */
+
+/* finish text */
+#finish_text_1 {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  font-size: 40px;
+  color: #e14343;
+}
+#finish_text_2 {
+  width: 70%;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 18%;
+  font-size: 30px;
+  color: #ef4e7b;
+}
+/* finish text */
