@@ -169,11 +169,26 @@
             <img class="icon_img" src="./img/broom.png" alt="broom" />
           </div>
           <div class="icon" id="bgm_switch_icon">
-            <img class="icon_img" id="bgm_switch_img" src="./img/bgm_switch_1.png" alt="bgm_switch" />
+            <img
+              class="icon_img"
+              id="bgm_switch_img"
+              src="./img/bgm_switch_1.png"
+              alt="bgm_switch"
+            />
           </div>
           <audio id="audio" src="./bgm/VeryXmas.mp3" loop></audio>
-          <a class="icon" id="github_icon" href="https://github.com/whj86/MatchingGame" target="_blank">
-            <img class="icon_img" src="./img/github.png" alt="github" style="border: 0;"/>
+          <a
+            class="icon"
+            id="github_icon"
+            href="https://github.com/whj86/MatchingGame"
+            target="_blank"
+          >
+            <img
+              class="icon_img"
+              src="./img/github.png"
+              alt="github"
+              style="border: 0"
+            />
           </a>
         </div>
         <!-- ====控制面板==== -->
@@ -475,6 +490,11 @@
           });
       }
 
+      // 設計給sort升冪用
+      function numberCompare(num1, num2) {
+        return num1 - num2;
+      }
+
       function game_prepare() {
         // 準備遊戲
 
@@ -506,7 +526,7 @@
         $("#seconds_tens").text("0");
 
         // 重置卡牌(全卡牌禁止點擊、隱藏恢復、取消翻開)
-        if ($(".card").hasClass("disabled")){
+        if ($(".card").hasClass("disabled")) {
           $(".card").removeClass("disabled");
         }
         $(".card").toggleClass("disabled");
@@ -581,15 +601,17 @@
                 // 遊戲時間轉成總秒數，塞到leaderboard_data最後一格，排序後除了最後一格外，都送到localstorage儲存，並更新記分板。
                 leaderboard_data[leaderboard_rows] =
                   parseInt(minutes) * 60 + parseInt(seconds);
-                leaderboard_data.sort();
+                leaderboard_data.sort(numberCompare);
                 for (let i = 0; i < leaderboard_rows; i++) {
                   localStorage.setItem(i, leaderboard_data[i]);
                 }
                 update_leaderboard();
 
                 // 顯示finish文字
-                $("#finish_text_1").text('Nice work!');
-                $("#finish_text_2").text('Click the "New Game" icon to play again!');
+                $("#finish_text_1").text("Nice work!");
+                $("#finish_text_2").text(
+                  'Click the "New Game" icon to play again!'
+                );
               });
           }
         });
@@ -610,7 +632,7 @@
         $("#bgm_switch_icon").on("click", function () {
           let img_elem = document.getElementById("bgm_switch_img");
           let audio = document.getElementById("audio");
-          if (img_elem.src.includes("bgm_switch_1")){
+          if (img_elem.src.includes("bgm_switch_1")) {
             img_elem.src = "./img/bgm_switch_2.png";
             audio.play();
           } else {
