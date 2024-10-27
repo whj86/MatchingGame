@@ -339,13 +339,8 @@ td {
 /* icon: 掃把(清空分數排行榜) */
 /* icon: 重新開始restart(直接開新的一局) */
 #control_panel {
-  background-color: #fff;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 60px;
-  color: hwb(185 24% 12%);
-
   display: flex;
+  justify-content: space-evenly;
 }
 
 /* icon容器div大小 */
@@ -353,6 +348,8 @@ td {
   width: 70px;
   height: 70px;
   position: relative;
+  transform: translate(5px, 5px);
+  transition: 0.5s;
 }
 
 /* icon圖示大小 */
@@ -364,16 +361,17 @@ td {
 
 /* icon hover樣式變化 */
 .icon:hover {
-  background-color: #ddd;
   border-radius: 8px;
   cursor: pointer;
+  transform: translate(-5px, -5px);
+  transition: 0.5s;
 }
 
 /* icon hover 氣泡提示框 */
 .icon:hover::before {
   position: absolute;
-  top: -45px;
-  left: 0;
+  top: -50px;
+  left: 50px;
   color: #fff;
   font-size: 13px;
   background: #0080db;
