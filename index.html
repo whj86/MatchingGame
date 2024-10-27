@@ -133,31 +133,27 @@
         <!-- ====碼表(stopwatch)==== -->
 
         <!-- ====遊戲紀錄排行 leaderboard==== -->
-        <main>
-          <div id="header">
-            <h1>Leaderboard</h1>
+        <div id="leaderboard">
+          <div id="leaderboard_title">Leaderboard</div>
+          <div id="leaderboard_rows">
+            <div class="board_row" id="board_row_1">
+              <div class="medal"><img class="medal_img" src="./img/gold_medal.png" alt="gold_medal"></div>
+              <div class="score" id="score_0"></div>
+            </div>
+            <div class="board_row" id="board_row_2">
+              <div class="medal"><img class="medal_img" src="./img/silver_medal.png" alt="silver_medal"></div>
+              <div class="score" id="score_1"></div>
+            </div>
+            <div class="board_row" id="board_row_3">
+              <div class="medal"><img class="medal_img" src="./img/bronze_medal.png" alt="bronze_medal"></div>
+              <div class="score" id="score_2"></div>
+            </div>
+            <div class="board_row" id="board_row_4">
+              <div id="number_for_score">4</div>
+              <div class="score" id="score_3"></div>
+            </div>
           </div>
-          <div id="leaderboard">
-            <table>
-              <tr id="tr_1" class="tr">
-                <td class="number">1</td>
-                <td class="score" id="score_0"></td>
-              </tr>
-              <tr id="tr_2" class="tr">
-                <td class="number">2</td>
-                <td class="score" id="score_1"></td>
-              </tr>
-              <tr id="tr_3" class="tr">
-                <td class="number">3</td>
-                <td class="score" id="score_2"></td>
-              </tr>
-              <tr id="tr_4" class="tr">
-                <td class="number">4</td>
-                <td class="score" id="score_3"></td>
-              </tr>
-            </table>
-          </div>
-        </main>
+        </div>
         <!-- ====遊戲紀錄排行 leaderboard==== -->
 
         <!-- ====控制面板==== -->

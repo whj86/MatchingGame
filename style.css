@@ -25,6 +25,8 @@ body {
   display: flex;
   width: 80%;
   background-image: linear-gradient(297deg, #faaca8 0%, #ddd6f3 100%);
+  /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+  /* background-color: #D3D3D3; */
   padding-right: 10px;
 }
 
@@ -41,7 +43,7 @@ body {
   flex: 4;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .row {
@@ -255,82 +257,108 @@ body {
 /* ====漸層邊框gradient border==== */
 
 /* ====遊戲分數排行榜 leaderboard==== */
-main {
+/* 包住整個排行榜 */
+#leaderboard {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 0.5rem;
+  border-radius: 8px;
+  cursor: default;
 }
 
-#header {
+/* 排行榜title */
+#leaderboard_title {
   width: 100%;
-  display: block;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px;
   text-align: center;
-  background-color: #ec7357;
+  background-color: #955461;
+  font-size: 50px;
+  color: #d1f2eb;
+  padding: 10px;
 }
 
-h1 {
-  font-size: 1.7rem;
-  color: #fbffb9;
-  cursor: default;
-}
-
-#leaderboard {
+/* 包含所有的board_row */
+#leaderboard_rows {
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 各名次列 */
+.board_row {
+  height: 60px;
+  font-size: 30px;
   position: relative;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-  color: #fe4365;
-  cursor: default;
+/* 各名次背景色設定 */
+#board_row_1 {
+  background-color: #179AB4;
 }
 
-tr {
-  transition: all 0.2s ease-in-out;
-  border-radius: 0.2rem;
+#board_row_2 {
+  background-color: #06445E;
 }
 
-#tr_1 {
-  background-image: linear-gradient(315deg, #fbab7e 0%, #ffe48c 100%);
+#board_row_3 {
+  background-color: #276C92;
 }
 
-#tr_2 {
-  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+#board_row_4 {
+  background-color: #868B8E;
 }
 
-#tr_3 {
-  background-image: linear-gradient(315deg, #08aeea 0%, #2af598 100%);
-}
-
-#tr_4 {
-  background-image: linear-gradient(135deg, #21d4fd 0%, #b721ff 100%);
-}
-
-td {
-  height: 10px;
-  font-size: 30px;
-  padding: 1rem 2rem;
-  position: relative;
-}
-
-.number {
-  height: 5px;
-  font-size: 30px;
-  text-align: left;
-}
-
+/* 名次時間的共同設定 */
 .score {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   height: 100%;
+  position: absolute;
+  left: 75%;
+}
+
+/* 設定各名次時間顏色 */
+#score_0 {
+  color: #F3CD4B;
+}
+
+#score_1 {
+  color: #C6D1D8;
+}
+
+#score_2 {
+  color: #D8936D;
+}
+
+#score_3 {
+  color: #d1f2eb;
+}
+
+/* medal容器大小 */
+.medal {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+}
+
+/* medal圖示大小 */
+.medal_img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+/* 沒medal的就用數字 */
+#number_for_score {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 8px;
+  left: 27px;
+  color: #d1f2eb;
+  font-size: 32px;
 }
 /* ====遊戲分數排行榜 leaderboard==== */
 
@@ -413,7 +441,7 @@ td {
   justify-content: center;
   align-items: center;
   font-size: 60px;
-  color: #fff;
+  color: #d1f2eb;
   padding: 10px;
   box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.4);
   transform: translate(5px, 5px);
