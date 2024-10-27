@@ -10,6 +10,9 @@
   <body>
     <div class="game_scene gradient-border">
       <div class="left_part">
+        <!-- start icon -->
+        <div id="start_icon">Start!</div>
+        <!-- start icon -->
         <div class="row row0">
           <div class="card" id="0">
             <div class="front"></div>
@@ -116,7 +119,7 @@
         </div>
       </div>
       <div class="right_part">
-        <!-- 碼表(stopwatch) -->
+        <!-- ====碼表(stopwatch)==== -->
         <div id="stopwatch">
           <div id="stopwatch_text">Time</div>
           <p id="stopwatch_time">
@@ -127,9 +130,9 @@
             <span id="seconds_units">0</span>
           </p>
         </div>
-        <!-- 碼表(stopwatch) -->
+        <!-- ====碼表(stopwatch)==== -->
 
-        <!-- 遊戲紀錄排行 leaderboard -->
+        <!-- ====遊戲紀錄排行 leaderboard==== -->
         <main>
           <div id="header">
             <h1>Leaderboard</h1>
@@ -156,18 +159,18 @@
             </table>
           </div>
         </main>
-        <!-- 遊戲紀錄排行 leaderboard -->
+        <!-- ====遊戲紀錄排行 leaderboard==== -->
 
-        <!-- 控制面板 -->
+        <!-- ====控制面板==== -->
         <div id="control_panel">
           <div class="icon" id="restart_icon"><img class="icon_img" src="./img/restart.png" alt="restart"></div>
           <div class="icon" id="broom_icon"><img class="icon_img" src="./img/broom.png" alt="broom"></div>
         </div>
-        <!-- 控制面板 -->
+        <!-- ====控制面板==== -->
       </div>
     </div>
 
-    <!-- 遊戲結束提示框 -->
+    <!-- ====遊戲結束提示框==== -->
     <div class="popup-wrap" id="letmeopen">
       <div class="popup-box transform-out">
         <h2 id="endGamePopUpTitle">Complete！</h2>
@@ -175,7 +178,7 @@
         <a class="close-btn popup-close" href="#">x</a>
       </div>
     </div>
-    <!-- 遊戲結束提示框 -->
+    <!-- ====遊戲結束提示框==== -->
 
     <script>
       // 設定卡牌的圖片資料: 圖組別、圖來源、被翻次數
@@ -403,7 +406,6 @@
         
         for (let i = 0; i < leaderboard_rows; i++) {
           let data = parseInt(localStorage.getItem(i));
-          console.log(data);
           
           if (!data) {
             // 沒資料時把值設超大
@@ -443,6 +445,21 @@
         update_leaderboard();
       }
 
+      function opening() {
+        // 開幕(點擊start icon後全翻牌，先讓玩家記五秒)
+
+
+        delay()
+          .then(function () {
+            $(".card").toggleClass("flipped");
+            return delay(5000); // 延遲五秒
+          })
+          .then(function () {
+            // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
+            $(".card").toggleClass("flipped");
+          });
+      }
+
       function game_prepare() {
         // 準備遊戲
 
@@ -473,17 +490,9 @@
         game_prepare();
 
         // 遊戲開始
-        // 翻開牌讓玩家先記五秒
-        delay()
-          .then(function () {
-            $(".card").toggleClass("flipped");
-            return delay(5000); // 延遲五秒
-          })
-          .then(function () {
-            // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
-            $(".card").toggleClass("flipped");
-          });
-
+        // 開幕(點擊start icon後全翻牌，先讓玩家記五秒)
+        opening();
+        
         // 點牌偵測
         $(".card").on("click", function () {
 
