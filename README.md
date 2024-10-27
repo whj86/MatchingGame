@@ -11,9 +11,13 @@ Thank you!
 # Source of Materials
 
 [Again icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/again)
+
 [Brush icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/brush)
+
 [Mute icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/mute)
+
 [Ui icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/ui)
+
 [Background music created by 煉獄庭園](https://note.com/rengokuteien/n/n0f6dc2ab7bab)
 
 # License
