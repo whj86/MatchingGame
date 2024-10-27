@@ -467,6 +467,8 @@
       function game_prepare() {
         // 準備遊戲
 
+        $("#restart_icon").toggleClass("disabled");
+
         // 洗圖順序
         shuffle_array(all_cards_data);
 
@@ -522,6 +524,7 @@
             })
             .then(function () {
               $(".card").toggleClass("disabled");
+              $("#restart_icon").toggleClass("disabled");
             });
         });
 
@@ -579,7 +582,6 @@
 
         // 點擊restart icon => 重新整理頁面
         $("#restart_icon").on("click", function () {
-          // location.reload();
           game_prepare();
         });
 
