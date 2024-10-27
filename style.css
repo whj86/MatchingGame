@@ -209,7 +209,7 @@ body {
 }
 /* ====遊戲結束框==== */
 
-/* 漸層邊框gradient border */
+/* ====漸層邊框gradient border==== */
 .gradient-border {
   --borderWidth: 8px;
   position: relative;
@@ -250,9 +250,9 @@ body {
     background-position: 0% 50%;
   }
 }
-/* 漸層邊框gradient border */
+/* ====漸層邊框gradient border==== */
 
-/* 遊戲分數排行榜 leaderboard */
+/* ====遊戲分數排行榜 leaderboard==== */
 main {
   overflow: hidden;
   display: flex;
@@ -330,9 +330,12 @@ td {
   align-items: center;
   height: 100%;
 }
-/* 遊戲分數排行榜 leaderboard */
+/* ====遊戲分數排行榜 leaderboard==== */
 
-/* 控制面板 */
+
+/* ====控制面板==== */
+/* icon: 掃把(清空分數排行榜) */
+/* icon: 重新開始restart(直接開新的一局) */
 #control_panel {
   background-color: #fff;
   border-radius: 8px;
@@ -343,36 +346,48 @@ td {
   display: flex;
 }
 
-/* 掃把(清空分數排行榜) */
-#broom_icon {
+/* icon容器div大小 */
+.icon {
   width: 70px;
   height: 70px;
   position: relative;
 }
 
-#broom_icon:hover {
+/* icon圖示大小 */
+.icon_img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+/* icon hover樣式變化 */
+.icon:hover {
   cursor: pointer;
   background-color: #ddd;
   border-radius: 8px;
 }
 
-#broom_icon:hover::before {
+/* icon hover 氣泡提示框 */
+.icon:hover::before {
   position: absolute;
   top: -45px;
   left: 0;
   color: #fff;
   font-size: 13px;
-  background: #346e7a;
+  background: #0080db;
   padding: 5px;
   border-radius: 5px;
+}
+
+/* 掃把broom hover 氣泡提示框文字 */
+#broom_icon:hover::before {
   content: "Clear Leaderboard";
 }
 
-#broom_img {
-  width: 70px;
-  height: 70px;
-  object-fit: cover;
+/* 重新開始restart hover 氣泡提示框文字 */
+#restart_icon:hover::before {
+  content: "New Game";
 }
-/* 掃把(清空分數排行榜) */
 
-/* 控制面板 */
+
+/* ====控制面板==== */
