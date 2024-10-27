@@ -391,6 +391,9 @@ td {
   content: "New Game";
 }
 
+/* ====控制面板==== */
+
+/* ====start icon==== */
 #start_icon {
   width: 210px;
   height: 100px;
@@ -416,5 +419,11 @@ td {
   transform: translate(-5px, -5px);
   transition: 0.5s;
 }
+/* ====start icon==== */
 
-/* ====控制面板==== */
+/* ====禁止點擊click==== */
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+/* ====禁止點擊click==== */

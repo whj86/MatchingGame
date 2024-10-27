@@ -10,9 +10,7 @@
   <body>
     <div class="game_scene gradient-border">
       <div class="left_part">
-        <!-- start icon -->
         <div id="start_icon">Start!</div>
-        <!-- start icon -->
         <div class="row row0">
           <div class="card" id="0">
             <div class="front"></div>
@@ -445,10 +443,8 @@
         update_leaderboard();
       }
 
-      function opening() {
-        // 開幕(點擊start icon後全翻牌，先讓玩家記五秒)
-
-
+      function opening_memory() {
+        // 開幕(全翻牌，先讓玩家記五秒)
         delay()
           .then(function () {
             $(".card").toggleClass("flipped");
@@ -482,6 +478,8 @@
         // 計時器時間重置
         minutes = 0;
         seconds = 0;
+
+        $(".card").toggleClass("disabled");
       }
 
       function game() {
@@ -489,9 +487,21 @@
         // 遊戲準備
         game_prepare();
 
-        // 遊戲開始
-        // 開幕(點擊start icon後全翻牌，先讓玩家記五秒)
-        opening();
+        // 點擊start icon後遊戲開始
+        $("#start_icon").on("click", function() {
+          // 讓start icon消失
+          $("#start_icon").css("display", "none");
+        
+          delay()
+          .then(function () {
+            // 開幕(全翻牌，先讓玩家記五秒)
+            opening_memory(); 
+            return delay(5000); // 延遲五秒才可點擊卡牌
+          })
+          .then(function () {
+            $(".card").toggleClass("disabled");
+          });
+        })
         
         // 點牌偵測
         $(".card").on("click", function () {
