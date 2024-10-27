@@ -214,8 +214,8 @@
 
       // 定義用以計時的變數interval
       let interval = 0;
-      let seconds = 0;
-      let minutes = 0;
+      let seconds;
+      let minutes;
 
       // 用Promise達到延遲時間
       let delay = function (s) {
@@ -233,6 +233,9 @@
       // 定義localstorage陣列，存取分數排行榜分數。
       // 陣列大小比分數排行榜多一格，多存此次分數。
       let leaderboard_data = new Array(leaderboard_rows + 1);
+
+      // 宣告計時器開跑變數
+      let stopwatchStart;
 
       function Stack() {
         // 定義堆疊，存放代表卡牌ID的字串。
@@ -455,36 +458,47 @@
         // 讀取localstorage，載入歷史遊戲分數到分數排行榜陣列。(localstorage只存最好的四筆分數)
         // localstorage => leaderboard_data陣列 => leaderboard分數排行榜
         update_leaderboard();
+
+        // enable計時器開關
+        stopwatchStart = 0;
+
+        // 計時器時間重置
+        minutes = 0;
+        seconds = 0;
       }
 
       function game() {
-        // 進行遊戲
+        
+        // 遊戲準備
+        game_prepare();
 
+        // 遊戲開始
+        // 翻開牌讓玩家先記五秒
         delay()
           .then(function () {
             $(".card").toggleClass("flipped");
-            return delay(5000); // 延遲五秒(讓玩家先記五秒)
+            return delay(5000); // 延遲五秒
           })
           .then(function () {
             // 配對失敗，取消翻開狀態 (變回蓋牌狀態)
             $(".card").toggleClass("flipped");
           });
 
-        // 計時器開跑變數
-        let stopwatchStart = 0;
+        // 點牌偵測
         $(".card").on("click", function () {
-          // 點牌偵測
 
-          // 第一次翻牌就讓計時器開跑
+          // 從第一次翻牌開始計時 (只有第一次翻牌才觸動計時器開關)
           if (!stopwatchStart) {
             clearInterval(interval);
             interval = setInterval(startTimer, 1000);
+            // disable計時器開關
             stopwatchStart = 1;
           }
 
-          // 從卡片元素抓出card id送到stack，stack會決定要不要處理。
+          // 從被點擊卡牌元素抓出card id，送到stack，stack會決定要不要處理。
           try_matching(this["id"]);
 
+          // 當全卡牌配對完畢：
           if (!unused_card_qty) {
             delay()
               .then(function () {
@@ -522,13 +536,18 @@
           }
         });
 
+        // 點擊restart icon => 重新整理頁面
+        $("#restart_icon").on("click", function() {
+            location.reload();
+        });
+
+        // 點擊broom icon => 清除歷史遊戲分數(localstorage)並更新分數排行榜
         $("#broom_icon").on("click", function() {
           clear_history();
         });
       }
 
       $(document).ready(function () {
-        game_prepare();
         game();
       });
     </script>
