@@ -389,6 +389,11 @@ td {
   content: "New Game";
 }
 
+/* 背景音樂 bgm switch icon hover 氣泡提示框文字 */
+#bgm_switch_icon:hover::before {
+  content: "Music Switch";
+}
+
 /* ====控制面板==== */
 
 /* ====start icon==== */

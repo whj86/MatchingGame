@@ -166,9 +166,10 @@
           <div class="icon" id="broom_icon">
             <img class="icon_img" src="./img/broom.png" alt="broom" />
           </div>
-          <!-- <audio src="./bgm/Holy Night Of A Dream.mp3" controls loop></audio> -->
-
-          <!-- <button onclick="playAudio();">播放</button> 有問題！ -->
+          <div class="icon" id="bgm_switch_icon">
+            <img class="icon_img" id="bgm_switch_img" src="./img/bgm_switch_1.png" alt="bgm_switch" />
+          </div>
+          <audio id="audio" src="./bgm/VeryXmas.mp3" loop></audio>
         </div>
         <!-- ====控制面板==== -->
       </div>
@@ -463,13 +464,6 @@
           });
       }
 
-      // 設定音樂播放函式
-      // function playAudio() {
-      //   const audio = document.createElement("audio");
-      //   audio.src = "./bgm/Holy Night Of A Dream.mp3";
-      //   audio.play();
-      // }
-
       function game_prepare() {
         // 準備遊戲
 
@@ -592,6 +586,19 @@
         // 點擊broom icon => 清除歷史遊戲分數(localstorage)並更新分數排行榜
         $("#broom_icon").on("click", function () {
           clear_history();
+        });
+
+        /* 點擊bgm switch icon => 切換音樂播放 */
+        $("#bgm_switch_icon").on("click", function () {
+          let img_elem = document.getElementById("bgm_switch_img");
+          let audio = document.getElementById("audio");
+          if (img_elem.src.includes("bgm_switch_1")){
+            img_elem.src = "./img/bgm_switch_2.png";
+            audio.play();
+          } else {
+            img_elem.src = "./img/bgm_switch_1.png";
+            audio.pause();
+          }
         });
       }
 
