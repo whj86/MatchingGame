@@ -14,11 +14,16 @@ Thank you!
 
 [Brush icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/brush)
 
-[Mute icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/mute)
+[Music switch icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/mute)
 
-[Ui icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/ui)
+[Gold, silver, and bronze medal icon created by Freepik](https://www.freepik.com/free-vector/star-coin-gold-silver-bronze_137645182.htm#fromView=search&page=1&position=40&uuid=6563ddd4-431c-4ff0-90ea-4fb2d396135d)
+
+[Japanese cover image designed by Freepik](https://www.freepik.com/free-vector/minimal-colorful-japanese-covers-pack_6966556.htm#from_view=detail_alsolike)
+
+[Photo by Sorasak on Unsplash](https://unsplash.com/photos/two-women-in-purple-and-pink-kimono-standing-on-street-_UIN-pFfJ7c)
 
 [Background music created by 煉獄庭園](https://note.com/rengokuteien/n/n0f6dc2ab7bab)
+
 
 # License
 

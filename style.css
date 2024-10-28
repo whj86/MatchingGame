@@ -24,26 +24,25 @@ body {
 .game_scene {
   display: flex;
   width: 80%;
-  background-image: linear-gradient(297deg, #faaca8 0%, #ddd6f3 100%);
-  /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
-  /* background-color: #D3D3D3; */
-  padding-right: 10px;
+  padding-right: 20px;
+  background-image: url(./img/background.jpg);
+  background-size: cover;
 }
 
 .left_part {
-  flex: 8;
+  flex: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  
   position: relative;
 }
 
 .right_part {
-  flex: 4;
+  flex: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .row {
@@ -104,18 +103,15 @@ body {
 #stopwatch_text {
   font-size: 70px;
   text-align: center;
-  background-color: #105782;
   color: #d1f2eb;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 3px ridge #ddd;
   cursor: default;
 }
 
 #stopwatch_time {
   display: flex;
   justify-content: space-evenly;
-  background-color: #105782;
   margin-top: 0;
-  margin-bottom: 0;
 }
 
 #minutes_units,
@@ -262,7 +258,6 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
   cursor: default;
 }
 
@@ -270,10 +265,10 @@ body {
 #leaderboard_title {
   width: 100%;
   text-align: center;
-  background-color: #955461;
   font-size: 50px;
+  padding-bottom: 10px;
   color: #d1f2eb;
-  padding: 10px;
+  position: relative;
 }
 
 /* 包含所有的board_row */
@@ -289,23 +284,7 @@ body {
   height: 60px;
   font-size: 30px;
   position: relative;
-}
-
-/* 各名次背景色設定 */
-#board_row_1 {
-  background-color: #179AB4;
-}
-
-#board_row_2 {
-  background-color: #06445E;
-}
-
-#board_row_3 {
-  background-color: #276C92;
-}
-
-#board_row_4 {
-  background-color: #868B8E;
+  border-top: 3px ridge #dfd898;
 }
 
 /* 名次時間的共同設定 */
@@ -319,15 +298,15 @@ body {
 
 /* 設定各名次時間顏色 */
 #score_0 {
-  color: #F3CD4B;
+  color: #f3cd4b;
 }
 
 #score_1 {
-  color: #C6D1D8;
+  color: #c6d1d8;
 }
 
 #score_2 {
-  color: #D8936D;
+  color: #f5a77e;
 }
 
 #score_3 {
@@ -361,7 +340,6 @@ body {
   font-size: 32px;
 }
 /* ====遊戲分數排行榜 leaderboard==== */
-
 
 /* ====控制面板==== */
 /* icon: 掃把(清空分數排行榜) */
@@ -433,25 +411,32 @@ body {
   width: 210px;
   height: 100px;
   position: absolute;
-  background-color: #e14343;
   z-index: 999;
   left: 38%;
-  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 60px;
-  color: #d1f2eb;
   padding: 10px;
-  box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.4);
-  transform: translate(5px, 5px);
+  
+  transform: translate(0px, 5px);
   transition: 0.5s;
+  
+  color: #fff;
+	font-size: 100px;
+	font-family: 'Jura', sans-serif;
+	text-shadow: 
+		-0.2rem -0.2rem 1rem rgba(255, 255, 255, 0.251),
+		0.2rem 0.2rem 1rem rgba(255, 255, 255, 0.251),
+		0 0 2rem #04f,
+		0 0 4rem #04f,
+		0 0 6rem #04f,
+		0 0 8rem #04f,
+		0 0 10rem #04f;
 }
 
 #start_icon:hover {
   cursor: pointer;
-  box-shadow: 5px 5px 60px rgba(0, 0, 0, 0.4);
-  transform: translate(-5px, -5px);
+  transform: translate(0px, -5px);
   transition: 0.5s;
 }
 /* ====start icon==== */
@@ -471,7 +456,7 @@ body {
   top: 40%;
   left: 40%;
   font-size: 40px;
-  color: #e14343;
+  color: #d1f2eb;
 }
 #finish_text_2 {
   width: 70%;
@@ -480,6 +465,6 @@ body {
   top: 50%;
   left: 18%;
   font-size: 30px;
-  color: #9E3FFF;
+  color: #d1f2eb;
 }
 /* finish text */
