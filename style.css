@@ -45,6 +45,18 @@ body {
   margin-bottom: 40px;
 }
 
+@media screen and (max-width: 1144px) {
+  .right_part{
+      display: none;
+  }
+}
+
+@media screen and (max-width: 652px) {
+  .left_part{
+      display: none;
+  }
+}
+
 .row {
   display: flex;
   justify-content: space-evenly;
