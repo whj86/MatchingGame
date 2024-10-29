@@ -453,13 +453,15 @@ body {
   left: 40%;
   font-size: 2.5em;
   color: #d1f2eb;
+  text-align: center;
 }
 #finish_text_2 {
   position: absolute;
   top: 50%;
   left: 23%;
-  right: 10%;
   font-size: 2em;
   color: #d1f2eb;
+  overflow-wrap: break-word;
+  text-align: center;
 }
 /* finish text */
