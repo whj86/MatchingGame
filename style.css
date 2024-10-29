@@ -42,21 +42,22 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 1%;
   margin-bottom: 3.3%;
   position: relative;
 }
 
 @media screen and (max-width: 1215px) {
-  .right_part{
-      display: none;
+  .right_part {
+    display: none;
   }
 }
 
 @media screen and (max-width: 723px) {
-  .left_part{
-      display: none;
+  .left_part {
+    display: none;
   }
-  .right_part{
+  .right_part {
     display: flex;
     overflow: hidden;
   }
@@ -275,7 +276,7 @@ body {
 /* 排行榜title */
 #leaderboard_title {
   text-align: center;
-  font-size: 3em;
+  font-size: 3.5em;
   padding-bottom: 0.2em;
   color: #d1f2eb;
   position: relative;
@@ -290,8 +291,8 @@ body {
 
 /* 各名次列 */
 .board_row {
-  height: 2em;
-  font-size: 1.9em;
+  height: 2.2em;
+  font-size: 2.2em;
   position: relative;
   border-top: 0.1em ridge #dfd898;
 }
@@ -424,16 +425,11 @@ body {
   transform: translate(0px, 5px);
   transition: 0.5s;
   color: #fff;
-	font-size: 6.3em;
-	font-family: 'Jura', sans-serif;
-	text-shadow: 
-		-0.2rem -0.2rem 1rem rgba(255, 255, 255, 0.251),
-		0.2rem 0.2rem 1rem rgba(255, 255, 255, 0.251),
-		0 0 2rem #04f,
-		0 0 4rem #04f,
-		0 0 6rem #04f,
-		0 0 8rem #04f,
-		0 0 10rem #04f;
+  font-size: 6.3em;
+  font-family: "Jura", sans-serif;
+  text-shadow: -0.2rem -0.2rem 1rem rgba(255, 255, 255, 0.251),
+    0.2rem 0.2rem 1rem rgba(255, 255, 255, 0.251), 0 0 2rem #04f, 0 0 4rem #04f,
+    0 0 6rem #04f, 0 0 8rem #04f, 0 0 10rem #04f;
 }
 
 #start_icon:hover {
@@ -461,8 +457,9 @@ body {
 #finish_text_2 {
   position: absolute;
   top: 50%;
-  left: 18%;
-  font-size: 1.9em;
+  left: 23%;
+  right: 10%;
+  font-size: 2em;
   color: #d1f2eb;
 }
 /* finish text */
