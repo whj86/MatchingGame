@@ -457,6 +457,7 @@ body {
 }
 #finish_text_2 {
   position: absolute;
+  width: 55%;
   top: 50%;
   left: 23%;
   font-size: 2em;
