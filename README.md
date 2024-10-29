@@ -4,9 +4,9 @@ This is a memory matching game.
 
 I am practicing web development skills through this project.
 
-Feel free to play and provide feedback. 
+Feel free to play and provide feedback please.
 
-Thank you!
+Have fun!
 
 # Source of Materials
 
@@ -20,9 +20,9 @@ Thank you!
 
 [Japanese cover image designed by Freepik](https://www.freepik.com/free-vector/minimal-colorful-japanese-covers-pack_6966556.htm#from_view=detail_alsolike)
 
-[Photo by Sorasak on Unsplash](https://unsplash.com/photos/two-women-in-purple-and-pink-kimono-standing-on-street-_UIN-pFfJ7c)
+[Photo by Clay Banks on Unsplash](https://unsplash.com/photos/photo-of-mountain-u27Rrbs9Dwc)
 
-[Background music created by 煉獄庭園](https://note.com/rengokuteien/n/n0f6dc2ab7bab)
+[Background music created by ハモおた](https://dova-s.jp/bgm/play16688.html)
 
 
 # License

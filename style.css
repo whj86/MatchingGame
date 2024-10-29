@@ -25,7 +25,7 @@ body {
   display: flex;
   width: 80%;
   padding-right: 20px;
-  background-image: url(./img/background.jpg);
+  background-image: url(./img/background_img.jpg);
   background-size: cover;
 }
 
@@ -42,7 +42,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .row {
@@ -336,7 +336,7 @@ body {
   position: absolute;
   top: 8px;
   left: 27px;
-  color: #d1f2eb;
+  color: #c6d1d8;
   font-size: 32px;
 }
 /* ====遊戲分數排行榜 leaderboard==== */
@@ -376,23 +376,21 @@ body {
 /* icon hover 氣泡提示框 */
 .icon:hover::before {
   position: absolute;
-  top: -50px;
-  left: 50px;
-  color: #fff;
-  font-size: 13px;
-  background: #0080db;
+  top: -55px;
+  color: #d1f2eb;
+  font-size: 18px;
   padding: 5px;
-  border-radius: 5px;
-}
-
-/* 掃把broom hover 氣泡提示框文字 */
-#broom_icon:hover::before {
-  content: "Clear Leaderboard";
 }
 
 /* 重新開始restart hover 氣泡提示框文字 */
 #restart_icon:hover::before {
   content: "New Game";
+}
+
+/* 掃把broom hover 氣泡提示框文字 */
+#broom_icon:hover::before {
+  content: "Clear Leaderboard";
+  left: -15px;
 }
 
 /* 背景音樂 bgm switch icon hover 氣泡提示框文字 */
@@ -403,6 +401,7 @@ body {
 /* github icon hover 氣泡提示框文字 */
 #github_icon:hover::before {
   content: "GitHub";
+  top: -40px;
 }
 /* ====控制面板==== */
 
@@ -417,10 +416,10 @@ body {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  
+
+  /* 霓虹字 */
   transform: translate(0px, 5px);
   transition: 0.5s;
-  
   color: #fff;
 	font-size: 100px;
 	font-family: 'Jura', sans-serif;
