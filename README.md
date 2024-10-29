@@ -22,6 +22,8 @@ Have fun!
 
 [Photo by Clay Banks on Unsplash](https://unsplash.com/photos/photo-of-mountain-u27Rrbs9Dwc)
 
+[The favicon created by Maan Icons - Flaticon](https://www.flaticon.com/free-icon/cards_17947105?term=card+game&page=1&position=75&origin=search&related_id=17947105)
+
 [Background music created by yuhei komatsu](https://dova-s.jp/bgm/play20477.html)
 
 
