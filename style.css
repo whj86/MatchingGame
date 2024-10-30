@@ -278,7 +278,7 @@ body {
   text-align: center;
   font-size: 3.5em;
   padding-bottom: 0.2em;
-  color: #d1f2eb;
+  color: #D9D3D3;
   position: relative;
 }
 
@@ -320,7 +320,7 @@ body {
 }
 
 #score_3 {
-  color: #d1f2eb;
+  color: #D9D3D3;
 }
 
 /* medal容器大小 */
