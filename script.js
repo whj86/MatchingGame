@@ -385,7 +385,20 @@ function game() {
           // 遊戲時間轉成總秒數，塞到leaderboard_data最後一格，排序後除了最後一格外，都送到localstorage儲存，並更新記分板。
           leaderboard_data[leaderboard_rows] =
             parseInt(minutes) * 60 + parseInt(seconds);
+          
+          // 判斷是否為新紀錄
+          if (
+            leaderboard_data[0] != 99999 &&
+            leaderboard_data[leaderboard_rows] < leaderboard_data[0]
+          ) {
+            $("#endGamePopUpTitle").text("New Record!");
+            $("#endGamePopUpTitle").css("color", "red");
+          } else {
+            $("#endGamePopUpTitle").text("Complete!");
+            $("#endGamePopUpTitle").css("color", "#e9c46a");
+          }
           leaderboard_data.sort(numberCompare);
+
           for (let i = 0; i < leaderboard_rows; i++) {
             localStorage.setItem(i, leaderboard_data[i]);
           }
