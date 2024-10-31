@@ -2,11 +2,19 @@
 
 This is a memory matching game.
 
-I am practicing web development skills through this project.
+I practice web development skills through this project.
 
 Feel free to play and provide feedback please.
 
 Have fun!
+
+# Link
+
+[https://whj86.github.io/MatchingGame/](https://whj86.github.io/MatchingGame/)
+
+# Game Cover
+
+![image](./img/game_cover.png)
 
 # Source of Materials
 
