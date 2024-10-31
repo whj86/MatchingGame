@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0 minimum-scale=0.1"
+      content="width=device-width, initial-scale=1.0, minimum-scale=0.1"
     />
     <meta
       name="description"
@@ -134,7 +134,12 @@
           <div class="right_part">
             <!-- ====碼表(stopwatch)==== -->
             <div id="stopwatch">
-              <div id="stopwatch_text">Time</div>
+              <div id="stopwatch_text">
+                <span>T</span>
+                <span>I</span>
+                <span>M</span>
+                <span>E</span>
+              </div>
               <p id="stopwatch_time">
                 <span id="minutes_tens">0</span>
                 <span id="minutes_units">0</span>
@@ -147,7 +152,19 @@
 
             <!-- ====遊戲紀錄排行 leaderboard==== -->
             <div id="leaderboard">
-              <div id="leaderboard_title">Leaderboard</div>
+              <div id="leaderboard_title">
+                <span>L</span>
+                <span>e</span>
+                <span>a</span>
+                <span>d</span>
+                <span>e</span>
+                <span>r</span>
+                <span>b</span>
+                <span>o</span>
+                <span>a</span>
+                <span>r</span>
+                <span>d</span>
+              </div>
               <div id="leaderboard_rows">
                 <div class="board_row">
                   <div class="medal">
@@ -227,7 +244,6 @@
     <!-- ====遊戲結束提示框==== -->
     <div class="popup-wrap" id="letmeopen">
       <div class="popup-box transform-out">
-        <!-- <h2 id="endGamePopUpTitle">Complete！</h2> -->
         <h2 id="endGamePopUpTitle"></h2>
         <h3 id="endGamePopUpText"></h3>
         <a class="close-btn popup-close" href="#">x</a>

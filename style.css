@@ -3,14 +3,13 @@
 } */
 
 /* Google Fonts: Noto Sans TC */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
 
 * {
   font-family: "Noto Sans TC", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
-/* Google Fonts: Noto Sans TC */
 
 body {
   display: flex;
@@ -309,7 +308,7 @@ body {
 /* 排行榜title */
 #leaderboard_title {
   text-align: center;
-  font-size: 3.5em;
+  font-size: 3.3em;
   padding-bottom: 0.2em;
   color: #d9d3d3;
   position: relative;
@@ -479,7 +478,7 @@ body {
 }
 /* ====禁止點擊click==== */
 
-/* finish text */
+/* ====finish text==== */
 #finish_text_1 {
   position: absolute;
   top: 40%;
@@ -488,6 +487,7 @@ body {
   color: #d1f2eb;
   text-align: center;
 }
+
 #finish_text_2 {
   position: absolute;
   width: 55%;
@@ -498,4 +498,13 @@ body {
   overflow-wrap: break-word;
   text-align: center;
 }
-/* finish text */
+/* ====finish text==== */
+
+/* ====文字柔和陰影==== */
+span {
+  font-family: "Anton", sans-serif;
+  font-size: 1em;
+  text-shadow: 8px 3px 15px #ced0d3;
+  letter-spacing: -0.05em;
+}
+/* ====文字柔和陰影==== */
